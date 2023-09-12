@@ -8,9 +8,6 @@ Daily Life Management as a Student
 - Group notifications
 - To buy list for groceries or projects
 - Map Links for meet ups
+- Schedule + To Do List + Group chat + Map GPS
 
-Computer Spec Comparison for low end
-- Budget and requirement and needs
-
-Chest 2.0 project revival
-- Need to learn how to use Unity
+Ajan approved.
