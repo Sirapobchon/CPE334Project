@@ -2,6 +2,8 @@
 For subject CPE334, KMUTT
 
 # Project Idea
+- Webpage
+- Webapp (Optional)
 
 Daily Life Management as a Student
 - Project Draft: Pin notes and due dates, can add stages with tags
@@ -9,5 +11,7 @@ Daily Life Management as a Student
 - To buy list for groceries or projects
 - Map Links for meet ups
 - Schedule + To Do List + Group chat + Map GPS
+
+
 
 Ajan approved.
