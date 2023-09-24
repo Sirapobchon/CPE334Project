@@ -12,17 +12,28 @@ Daily Life Management as a Student
 - Map Links for meet ups
 - Schedule + To Do List + Group chat + Map GPS
 
-Ajan approved.
-
 # Progress update
 
-## 24 Sep Meeting
+### 24 Sep Meeting
 
-Appication
-- Python base
-- Flutter (UI)
-- Django (Backend) - Earth
+- Project name
+    - *INSERT COOL CATCHY NAME HERE*
 
-## 11-12 Sep Consultation
+- Website?
+
+- Appication
+    - Flutter (UI)
+    - Dart Language for Flutter
+    - Python Language for Flutter(Flet)
+    - Django (Backend) - Earth
+
+- Github branching
+    - Main
+    - Each one for each member
+
+### 11-12 Sep Consultation
 
 - Daily Life Management as a Student Project approval
+
+# Random Idea (Probably won't be added)
+- NFC tap to friend for sending in app stuff
