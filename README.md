@@ -12,6 +12,17 @@ Daily Life Management as a Student
 - Map Links for meet ups
 - Schedule + To Do List + Group chat + Map GPS
 
-
-
 Ajan approved.
+
+# Progress update
+
+## 24 Sep Meeting
+
+Appication
+- Python base
+- Flutter (UI)
+- Django (Backend) - Earth
+
+## 11-12 Sep Consultation
+
+- Daily Life Management as a Student Project approval
