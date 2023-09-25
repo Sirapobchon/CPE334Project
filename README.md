@@ -19,10 +19,17 @@ For subject CPE334, KMUTT
 # Progress update
 
 ### 29 Sep planned meeting
-- Friday 29 Sep Meeting planning
-    - Theme template decision 
+<details>
+<summary>Friday 29 Sep Meeting planning</summary>
+
+- Theme template deciding
+
+</details>
 
 ### 25 Sep First Draft
+<details>
+<summary>Functional Requirements</summary>
+
 Functional Requirements:
 
 - User Registration and Profile:
@@ -59,11 +66,15 @@ Functional Requirements:
 - Documentation:
     - Provide a user manual.
 
+</details>
+
 ### 24 Sep Meeting
+<details>
+<summary>Project Planning</summary>
+
 - Project name
     - *INSERT COOL CATCHY NAME HERE*
     - LifeHack (Backup Name)
-
 - Appication
     - Android compile
         - https://youtu.be/NA2R7zagNzM?si=B_tl8xjbMyA8Ls27
@@ -72,7 +83,6 @@ Functional Requirements:
         - https://www.codesass.com/blog/articles/flet      
     - Django (Backend) - Ing,Earth,ZhiWang
         - https://devhub.in.th/blog/django-python
-
 - UI Designing (Flet)
     - Notification
         - https://youtu.be/dhQ-zPErVgQ?si=KPA64J1p7gnu7JXC
@@ -80,13 +90,18 @@ Functional Requirements:
         - https://youtu.be/qRqxAUC_4oA?si=GD1teHgYMIzd__Xe
     - Learning Playlist
         - https://youtube.com/playlist?list=PLIYV27zh-hBEcu70pkUkdbwrJuKqdQ9tK&si=RCJESJDf4saLO4rm
-
 - Github Progress update
     - Only me probably
     - For version keeping
     - Because "Coding"
 
+</details>
+
 ### 11-12 Sep Consultation
+<details>
+<summary>Project approval</summary>
+
 - Daily Life Management as a Student Project approval
 
+</details>
 
