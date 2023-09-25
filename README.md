@@ -2,22 +2,64 @@
 For subject CPE334, KMUTT
 
 # Project Idea
-- Appication
+- Daily Life Management Android Application
 
 ### Daily Life Management as a Student
-- Project Draft: Pin notes and due dates, can add stages with tags
+- Pin notes and due dates, can add stages with tags
 - Group notifications
-- To buy list for groceries or projects
+- To buy list + To Do List 
 - Map Links for meet ups
-- Schedule + To Do List + Group chat + Map GPS
+- Schedule
 
 ### Random Idea (Probably won't be added)
 - NFC tap to friend for sending in app stuff
+- Group chat messaging system
+- Map location with GPS tracking
 
 # Progress update
 
-### 24 Sep Meeting
+### 29 Sep planned meeting
+- Friday 29 Sep Meeting planning
+    - Theme template decision 
 
+### 25 Sep First Draft
+Functional Requirements:
+
+- User Registration and Profile:
+    - Users can create accounts and log in.
+    - Users can update their profiles.
+- Dashboard:
+    - Users see a home screen showing notes, due dates and notifications.
+- Notes and Tasks:
+    - Users can create, edit, and delete notes.
+    - Tasks can be organised with stages and tags.
+    - Tasks have priorities and deadlines.
+    - There's a to-do list for tasks.
+- Groups and Notifications:
+    - Users can create and join groups.
+    - Groups support announcements and notifications.
+- Shopping List:
+    - Users can create shopping lists.
+    - Easy item management and reminders.
+- Map Integration:
+    - Users can share map links.
+- Schedule and Calendar:
+    - Users have a calendar for events.
+    - Events support reminders.
+- Settings and Security:
+    - Users can customise app settings.
+    - Ensure data security and privacy.
+- Offline Mode:
+    - App works offline with basic features.
+- Data Backup and Sync:
+    - Users can back up and sync data.
+- Feedback and Support:
+    - Users can provide feedback.
+    - Include a help section.
+- Documentation:
+    - Provide a user manual.
+
+### 24 Sep Meeting
 - Project name
     - *INSERT COOL CATCHY NAME HERE*
     - LifeHack (Backup Name)
@@ -39,16 +81,12 @@ For subject CPE334, KMUTT
     - Learning Playlist
         - https://youtube.com/playlist?list=PLIYV27zh-hBEcu70pkUkdbwrJuKqdQ9tK&si=RCJESJDf4saLO4rm
 
-- Friday 29 Sep Meeting planning
-    - Theme template
-
 - Github Progress update
     - Only me probably
     - For version keeping
     - Because "Coding"
 
 ### 11-12 Sep Consultation
-
 - Daily Life Management as a Student Project approval
 
 
