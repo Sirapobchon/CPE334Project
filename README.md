@@ -18,9 +18,9 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 29 Sep planned meeting
+### 5 Oct planned meeting
 <details>
-<summary>Friday 29 Sep Meeting planning</summary>
+<summary>Thursday 5 Oct Meeting planning</summary>
 
 - Theme template deciding
 
