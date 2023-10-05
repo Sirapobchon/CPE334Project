@@ -22,7 +22,41 @@ For subject CPE334, KMUTT
 <details>
 <summary>Thursday 5 Oct Meeting planning</summary>
 
+- Main Function to be done
+    - To do list
+    - To buy list
+        - Total price calculation
+    - Notification
+    - Calendar
+        - With note 
+    - Login and Signup page 
+    - Price Budget Calculate
+        - New idea
+
+- New Functional Requirements:
+    - <b>Login and Signup Page:</b>
+        - Users should be able to create an account with a username and password.
+        - Existing users should be able to log in securely.
+        - There should be password recovery options (e.g., email verification, security questions).
+        - User authentication should be secure and protect user data.
+
+- Scrum process
+    - Bonus Scrum Master
+    - 2 Week of Sprint Length
+    - 4 Sprints
+        - 
+        - 
+        - 
+        - 
+    - Requirement Calculation
+        - 
 - Theme template deciding
+    - #86E3CE
+    - #D6E6A5
+    - #FFDD94
+    - #FA897B
+    - #CCABD8
+    - ![reference theme](reference/theme.png)
 
 </details>
 
