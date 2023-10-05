@@ -19,7 +19,7 @@ For subject CPE334, KMUTT
 # Progress update
 
 ### 5 Oct planned meeting
-<details>
+<details open>
 <summary>Thursday 5 Oct Meeting planning</summary>
 
 - Main Function to be done
@@ -34,29 +34,60 @@ For subject CPE334, KMUTT
         - New idea
 
 - New Functional Requirements:
-    - <b>Login and Signup Page:</b>
+    - Login and Signup Page:
         - Users should be able to create an account with a username and password.
         - Existing users should be able to log in securely.
         - There should be password recovery options (e.g., email verification, security questions).
         - User authentication should be secure and protect user data.
+    - To-Do List and To-Buy List:
+        - Users should be able to create, edit, and delete tasks.
+        - Each task should have a title, description, due date, and priority.
+        - Tasks should be organized by categories or projects.
+        - Users should be able to mark tasks as completed.
+        - There should be a way to filter and sort tasks (e.g., by due date or priority).
+        - Users should receive notifications or reminders for upcoming tasks.
+        - Users should be able to create a shopping list.
+        - Each item on the list should have a name, quantity, and optional notes.
+        - Users should be able to mark items as purchased or delete them.
+        - There should be a way to categorize items (e.g., groceries, household items).
+    - Price and Value Calculation:
+        - Users should be able to input prices and quantities of items.
+        - The application should calculate the total cost and provide a breakdown.
+        - Users should be able to calculate the value of items (e.g., investments, assets).
+        - There should be support for different currencies or units of measurement.
+    - Calendar:
+        - Users should be able to add events/appointments to the calendar.
+        - Each event should have a title, date, time, location, and notes.
+        - Users should be able to view their calendar by day, week, or month.
+        - Calendar should support recurring events (e.g., weekly meetings).
+        - Users should have the option to set reminders for calendar events.
+    - Notification:
+        - Users should receive notifications for various events (e.g., task deadlines, calendar events).
+        - Notifications should support multiple platforms (e.g., mobile notifications, email notifications).
+        - Users should have the option to customize notification preferences (e.g., sound, vibration).
 
 - Scrum process
     - Bonus Scrum Master
     - 2 Week of Sprint Length
     - 4 Sprints
-        - 
-        - 
-        - 
-        - 
-    - Requirement Calculation
-        - 
+        - 6 Oct - 19 Oct
+        - 20 Oct - 2 Nov
+        - 3 Nov - 15 Nov
+        - 17 Nov - 28 Nov
+    - Requirement Calculation score
+         - Login and Signup Page - 5
+         - To-Do List and To-Buy List - 3
+         - Price and Value Calculation - 2
+         - Calendar - 8
+         - Notification - 5
+
 - Theme template deciding
     - #86E3CE
     - #D6E6A5
     - #FFDD94
     - #FA897B
     - #CCABD8
-    - ![reference theme](reference/theme.png)
+  ![reference theme](reference/theme.png)
 
 </details>
 
