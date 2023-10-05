@@ -1,6 +1,6 @@
 # CPE334Project
 For subject CPE334, KMUTT
-
+test
 # Project Idea
 - Daily Life Management Android Application
 
@@ -71,6 +71,8 @@ For subject CPE334, KMUTT
     - 2 Week of Sprint Length
     - 4 Sprints
         - 6 Oct - 19 Oct
+            - Login and Signup Page
+            - To-Do List and To-Buy List
         - 20 Oct - 2 Nov
         - 3 Nov - 15 Nov
         - 17 Nov - 28 Nov
@@ -82,12 +84,15 @@ For subject CPE334, KMUTT
          - Notification - 5
 
 - Theme template deciding
-    - #86E3CE
-    - #D6E6A5
-    - #FFDD94
-    - #FA897B
-    - #CCABD8
-  ![reference theme](reference/theme.png)
+    - Font theme
+        - SF Pro https://developer.apple.com/fonts/
+    - Color theme
+        - <img src="reference/theme.png" alt="reference theme" width="600" height="auto">
+        - #86E3CE
+        - #D6E6A5
+        - #FFDD94
+        - #FA897B
+        - #CCABD8
 
 </details>
 
