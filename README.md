@@ -23,11 +23,11 @@ For subject CPE334, KMUTT
 <summary>The big OH... moment</summary>
 
 @Sirapobchon had discovered that flet(UI) could only be run as one file. 
-<img src="reference/image.png" alt="OMG" width="10px">
+<img src="reference/image.png" alt="OMG" width="20px">
 No dividing into multiple .py files to run. 
 Only import to be page run in the main.py file.
 Meeting for letting everyone know that the files format will probably needed to be changes. 
-<img src="reference/image-1.png" alt="fake-smile" width="10px">
+<img src="reference/image-1.png" alt="fake-smile" width="20px">
 
 
 - Need fixing
