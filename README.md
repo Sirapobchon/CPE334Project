@@ -22,10 +22,13 @@ For subject CPE334, KMUTT
 <details open>
 <summary>The big OH... moment</summary>
 
-@Sirapobchon had discovered that flet(UI) could only be run as one file. ![OMG](reference/image.png)
+@Sirapobchon had discovered that flet(UI) could only be run as one file. 
+<img src="reference/image.png" alt="OMG" width="10px">
 No dividing into multiple .py files to run. 
 Only import to be page run in the main.py file.
-Meeting for letting everyone know that the files format will probably needed to be changes. ![Alt text](reference/image-1.png)
+Meeting for letting everyone know that the files format will probably needed to be changes. 
+<img src="reference/image-1.png" alt="fake-smile" width="10px">
+
 
 - Need fixing
     - login.py
