@@ -1,9 +1,43 @@
 import flet as ft
+import requests
 import math
 
 def main(page : ft.Page):
     #page.theme_mode = ft.ThemeMode.LIGHT
-    page.title="Login and Register"
+    page.title="Login"
+
+    def post(e):
+        print(username.value)
+        print(password.value)
+        print("Send")
+    page.update()
+
+    username = ft.TextField(
+        label="Username or E-mail",
+        text_style=ft.TextStyle(
+            size=14,
+            color="#000000",
+        ),
+        border_radius=40,
+        border_color=ft.colors.BLACK,
+    )
+
+    password = ft.TextField(
+        label="Password",
+        text_style = ft.TextStyle(
+            size=14,
+            color="#000000",
+        ),
+        password=True,
+        can_reveal_password=True,
+        border_radius=40,
+        border_color=ft.colors.BLACK,
+        focused_border_color=ft.colors.ORANGE_700,
+    )
+
+    def forgetpass(e):
+        print("Forget Password")
+    page.update()
 
     login = ft.SafeArea(ft.Container(
         #image_src="signinbg.jpg",
@@ -72,22 +106,10 @@ def main(page : ft.Page):
                     theme_mode=ft.ThemeMode.LIGHT,
                     width=300,  
                     margin=ft.margin.only(left=10,right=10,top=20), 
-                    content=ft.Column(
-                        controls=[
-                            ft.TextField(
-                                
-                                label="User Name or E-mail",
-                                
-                                text_style = ft.TextStyle(
-                                    size=14,
-                                    color="#000000",
-                                ),
-                                border_radius=40,
-                                border_color=ft.colors.BLACK,
-                                focused_border_color=ft.colors.ORANGE_700,
-                            )
-                        ]
-                    )
+                    content = ft.Column(
+                        controls=[username],
+                    ),
+                    
                 ),
                 ft.Container(
                     theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
@@ -95,21 +117,7 @@ def main(page : ft.Page):
                     width =300,  
                     margin=ft.margin.only(left=10,right=10,top=5), 
                     content=ft.Column(
-                        controls=[
-                            ft.TextField(
-                                label="Password",
-                                text_style = ft.TextStyle(
-                                    size=14,
-                                    color="#000000",
-                                ),
-                                password=True,
-                                can_reveal_password=True,
-                                
-                                border_radius=40,
-                                border_color=ft.colors.BLACK,
-                                focused_border_color=ft.colors.ORANGE_700,
-                            )
-                        ]
+                        controls=[password],
                     )
                 ),
                 ft.Container(
@@ -119,7 +127,8 @@ def main(page : ft.Page):
                         "Forgot Password?" ,
                         style=ft.ButtonStyle(
 
-                        )
+                        ),
+                        on_click=forgetpass,
                     )
                 ),
                 ft.Container(
@@ -133,7 +142,8 @@ def main(page : ft.Page):
                             color="#ffffff",
                             bgcolor=ft.colors.ORANGE_700,
                             shape={}
-                        )
+                        ),
+                        on_click=post,
                     )
                 )
             ]

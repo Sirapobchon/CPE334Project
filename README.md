@@ -18,13 +18,34 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 5 Oct planned meeting
+### 11 Oct Emergency Meeting
 <details open>
+<summary>The big OH... moment</summary>
+
+@Sirapobchon had discovered that flet(UI) could only be run as one file. ![OMG](reference/image.png)
+No dividing into multiple .py files to run. 
+Only import to be page run in the main.py file.
+Meeting for letting everyone know that the files format will probably needed to be changes. ![Alt text](reference/image-1.png)
+
+- Need fixing
+    - login.py
+    - main.py
+    - django
+        - settings.py
+        - urls.py
+        - user app
+            - models.py
+            - views.py
+
+</details>
+
+### 5 Oct planned meeting
+<details>
 <summary>Thursday 5 Oct Meeting planning</summary>
 
 - Main Function to be done
-    - To do list
-    - To buy list
+    - To do list 
+    - To buy list 
         - Total price calculation
     - Notification
     - Calendar
@@ -67,12 +88,13 @@ For subject CPE334, KMUTT
         - Users should have the option to customize notification preferences (e.g., sound, vibration).
 
 - Scrum process
-    - Bonus Scrum Master
+    - @pppcyd Scrum Master
     - 2 Week of Sprint Length
     - 4 Sprints
         - 6 Oct - 19 Oct
-            - Login and Signup Page
-            - To-Do List and To-Buy List
+            - Login and Signup Page @EXer07
+            - To-Do List and To-Buy List @pppcyd
+            - Home page @janekmutt
         - 20 Oct - 2 Nov
         - 3 Nov - 15 Nov
         - 17 Nov - 28 Nov
@@ -148,10 +170,10 @@ Functional Requirements:
 - Appication
     - Android compile
         - https://youtu.be/NA2R7zagNzM?si=B_tl8xjbMyA8Ls27
-    - Flutter(Flet) (UI) - Ing,Bonus,Jane,Earth
+    - Flutter(Flet) (UI) - @Sirapobchon,@pppcyd,@janekmutt,@EXer07
         - Python Language
         - https://www.codesass.com/blog/articles/flet      
-    - Django (Backend) - Ing,Earth,ZhiWang
+    - Django (Backend) - @Sirapobchon,@EXer07,@WangSonicS
         - https://devhub.in.th/blog/django-python
 - UI Designing (Flet)
     - Notification
