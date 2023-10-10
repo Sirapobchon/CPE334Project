@@ -133,15 +133,13 @@ def main(page : ft.Page):
                             color="#ffffff",
                             bgcolor=ft.colors.ORANGE_700,
                             shape={}
-
                         )
-
                     )
                 )
             ]
         ),
     )
-    )
+)
 
     page.add(login)
 
