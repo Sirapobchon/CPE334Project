@@ -1,6 +1,7 @@
 import flet as ft
 import requests
 import math
+from django.contrib.auth import authenticate
 
 def main(page : ft.Page):
     #page.theme_mode = ft.ThemeMode.LIGHT
@@ -9,6 +10,13 @@ def main(page : ft.Page):
     def post(e):
         print(username.value)
         print(password.value)
+        user = authenticate(username=username.value, password=password.value)
+        if user is not None:
+            # A backend authenticated the credentials
+            print("Login")
+        else:
+            # No backend authenticated the credentials
+            print("Not Login")
         print("Send")
     page.update()
 
