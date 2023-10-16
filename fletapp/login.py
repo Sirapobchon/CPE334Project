@@ -1,22 +1,20 @@
 import flet as ft
 import requests
 import math
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login
 
 def main(page : ft.Page):
     #page.theme_mode = ft.ThemeMode.LIGHT
     page.title="Login"
 
     def post(e):
-        print(username.value)
-        print(password.value)
-        user = authenticate(username=username.value, password=password.value)
-        if user is not None:
-            # A backend authenticated the credentials
-            print("Login")
-        else:
-            # No backend authenticated the credentials
-            print("Not Login")
+        #print(username.value)
+        #print(password.value)
+        r = requests.post("http://127.0.0.1:8000/user/login/", {
+            "username": username.value,
+            "password": password.value
+        })
+        print(r)
         print("Send")
     page.update()
 
