@@ -18,8 +18,44 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 11 Oct Emergency Meeting
+### 19 Oct Sprint End Meeting
 <details open>
+<summary>Sprint End Meeting</summary>
+
+- Scrum process
+    -  Sprints
+        - 6 Oct - 19 Oct
+            - Login and Signup Page @EXer07 
+                - Score 3 remaining 2 point
+                - Need Link Page and Backend
+            - To-Do List and To-Buy List @pppcyd
+                - Score 1 remaining 2 point
+                - To-Buy List and Backend
+            - Home page @janekmutt
+                - Score 2 remaining 1 point
+                - Icon instead of picture
+            - Connecting Page
+                - Come from Home Page of Jane
+                - Waiting for Jane to be done with Home page
+                - Scoring 8
+        - 26 Oct - 2 Nov
+        - 3 Nov - 15 Nov
+        - 17 Nov - 28 Nov
+    - Requirement Calculation score
+        - Home page - 3
+            - Connecting Page (Continuation from Home Page)
+        - Login and Signup Page - 5
+        - To-Do List and To-Buy List - 3
+        - Price and Value Calculation - 2
+        - Calendar - 8
+        - Notification - 5
+    - Next sprint planning
+        - Starting 26 Oct due to Midterm test
+
+</details>
+
+### 11 Oct Emergency Meeting
+<details>
 <summary>The big OH... moment</summary>
 
 @Sirapobchon had discovered that flet(UI) could only be run as one file. 
@@ -28,7 +64,6 @@ No dividing into multiple .py files to run.
 Only import to be page run in the main.py file.
 Meeting for letting everyone know that the files format will probably needed to be changes. 
 <img src="reference/image-1.png" alt="fake-smile" width="20px">
-
 
 - Need fixing
     - login.py
