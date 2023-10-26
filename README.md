@@ -18,8 +18,27 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 19 Oct Sprint End Meeting
+### 26 Oct 2ND Sprint Start Meeting
 <details open>
+<summary>Sprint End Meeting</summary>
+
+- Scrum process
+    -  Sprints
+        - 26 Oct - 2 Nov
+            - Score
+            @pppcyd To Buy-list - 3
+            @janekmutt Value Calculator - 2
+            @janekmutt Home page continue - 1
+            @WangSonicS Calendar that can hold reminders - 8
+            @EXer07 and @Sirapobchon backend stuff for all page
+            @everyone Whoever is free, start making a report
+    
+- The work should be completed more than 80% because if not it will not be completed in time.
+
+</details>
+
+### 19 Oct Sprint End Meeting
+<details>
 <summary>Sprint End Meeting</summary>
 
 - Scrum process
