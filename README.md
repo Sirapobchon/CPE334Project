@@ -25,13 +25,13 @@ For subject CPE334, KMUTT
 - Scrum process
     -  Sprints
         - 26 Oct - 2 Nov
-            - Score
-            @pppcyd To Buy-list - 3
-            @janekmutt Value Calculator - 2
-            @janekmutt Home page continue - 1
-            @WangSonicS Calendar that can hold reminders - 8
-            @EXer07 and @Sirapobchon backend stuff for all page
-            @everyone Whoever is free, start making a report
+            - Scoring and Scrum Planning
+            - @pppcyd To Buy-list - 3
+            - @janekmutt Value Calculator - 2
+            - @janekmutt Home page continue - 1
+            - @WangSonicS Calendar that can hold reminders - 8
+            - @EXer07 and @Sirapobchon backend stuff for all page - alot
+            - @everyone Whoever is free, start making a report
     
 - The work should be completed more than 80% because if not it will not be completed in time.
 
@@ -46,17 +46,17 @@ For subject CPE334, KMUTT
         - 6 Oct - 19 Oct
             - Login and Signup Page @EXer07 
                 - Score 3 remaining 2 point
-                - Need Link Page and Backend
-            - To-Do List and To-Buy List @pppcyd
-                - Score 1 remaining 2 point
-                - To-Buy List and Backend
+                - Need Link Page and Backend @Sirapobchon
+            - To-Do List @pppcyd
+                - Score 2 remaining 1 point
+                - Remaining Backend @Sirapobchon
             - Home page @janekmutt
                 - Score 2 remaining 1 point
                 - Icon instead of picture
             - Connecting Page
                 - Come from Home Page of Jane
                 - Waiting for Jane to be done with Home page
-                - Scoring 8
+                - Scoring up to 8
         - 26 Oct - 2 Nov
         - 3 Nov - 15 Nov
         - 17 Nov - 28 Nov
