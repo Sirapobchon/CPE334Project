@@ -20,14 +20,17 @@ For subject CPE334, KMUTT
 
 ### 1 Nov Backend Meeting
 <details open>
-<summary>Deciding the Backk end future</summary>
+<summary>Deciding the Back-end future</summary>
 
-Google Firebase instead of django
+Change to Google Firebase instead of django
 - Reason:
     - easier
-    - cloud hosting (No need for Open own server)
+    - cloud hosting (No need for open own server)
 
-
+- Scrum process
+    - @EXer07 Notification - 3
+    - @janekmutt Forget Password Page - 1
+    - @EXer07 and @Sirapobchon Firebase Server - 8
 
 </details>
 

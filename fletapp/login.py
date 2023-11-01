@@ -1,7 +1,12 @@
 import flet as ft
 import requests
 import math
-from django.contrib.auth import authenticate,login
+#from django.contrib.auth import authenticate,login
+import firebase_admin
+from firebase_admin import credentials
+
+cred = credentials.Certificate("./firebase/serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
 
 def main(page : ft.Page):
     #page.theme_mode = ft.ThemeMode.LIGHT
@@ -10,14 +15,17 @@ def main(page : ft.Page):
     page.padding = 0
 
     def post(e):
-        #print(username.value)
-        #print(password.value)
+        list
+        """
+        print(username.value)
+        print(password.value)
         payload = {'username':'username.value','password':'password.value'}
         r = requests.post("http://127.0.0.1:8000/user/login/", data=payload)
         print(payload)
         print(r.text)
         print(r.status_code)
         print("Send")
+        """
     page.update()
 
     username = ft.TextField(
