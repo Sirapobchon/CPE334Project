@@ -1,10 +1,8 @@
 import flet as ft
-import requests
 import math
 
 #firebase cloud
-import firebase_admin
-from firebase_admin import firestore, credentials
+from firebase_admin import credentials
 cred = credentials.Certificate("./firebase/serviceAccountKey.json")
 
 fireconfig = {
@@ -29,23 +27,21 @@ def main(page : ft.Page):
     page.bgcolor ="#86e3ce"
     page.padding = 0
 
-    listFromFirebase = ft.Column(
-            auto_scroll=True,
-            scroll="always",
-        )
-
+#############################################################################
     def post(e):
         try:
             auth.sign_in_with_email_and_password(
-                username.value, password.value)
+                Email.value, password.value)
             print ("Success")
         except:
-            page.add(ft.Text("Wrong username or password"))
+            page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
+            page.update()
             print("Wrong username or password")
     page.update()
-
-    username = ft.TextField(
-        label="Username or E-mail",
+##############################################################################
+    
+    Email = ft.TextField(
+        label="E-mail",
         text_style=ft.TextStyle(
             size=14,
             color="#000000",
@@ -140,7 +136,7 @@ def main(page : ft.Page):
                     width=300,  
                     margin=ft.margin.only(left=10,right=10,top=20), 
                     content = ft.Column(
-                        controls=[username],
+                        controls=[Email],
                     ),
                     
                 ),
