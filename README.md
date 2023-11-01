@@ -20,7 +20,7 @@ For subject CPE334, KMUTT
 
 ### 26 Oct 2ND Sprint Start Meeting
 <details open>
-<summary>Sprint End Meeting</summary>
+<summary>Sprint Start Meeting</summary>
 
 - Scrum process
     -  Sprints

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Our apps
-    'user.apps.UserConfig',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +72,12 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.tokenAuthentication"
+    ]
+}
+
 WSGI_APPLICATION = 'projectdjango.wsgi.application'
 
 
@@ -84,6 +90,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

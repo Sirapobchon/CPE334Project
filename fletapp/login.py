@@ -6,15 +6,16 @@ from django.contrib.auth import authenticate,login
 def main(page : ft.Page):
     #page.theme_mode = ft.ThemeMode.LIGHT
     page.title="Login"
+    page.bgcolor ="#86e3ce"
+    page.padding = 0
 
     def post(e):
         #print(username.value)
         #print(password.value)
-        r = requests.post("http://127.0.0.1:8000/user/login/", {
-            "username": username.value,
-            "password": password.value
-        })
-        print(r)
+        payload = {'username':'username.value','password':'password.value'}
+        r = requests.post("http://127.0.0.1:8000/user/login/", data=payload)
+        print(r.text)
+        print(r.status_code)
         print("Send")
     page.update()
 
@@ -58,6 +59,7 @@ def main(page : ft.Page):
 
         #bgcolor="#ffffff",
         border_radius=10,
+        height=800,
         content=ft.Column(
             width = 320,
             controls=[

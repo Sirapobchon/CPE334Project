@@ -6,7 +6,7 @@ from .models import User
 class UserList():
     def login(request):
         if request.method == 'POST':
-            csrf_token = request.COOKIES.get('csrftoken')
+            #csrf_token = request.COOKIES.get('csrftoken')
             username = request.POST.get('username')
             password = request.POST.get('password')
             # Your login logic here
@@ -17,7 +17,7 @@ class UserList():
             else:
                 return JsonResponse({'message': 'Invalid username or password'}, status=400)
             
-        return JsonResponse({'message': 'Invalid username or password' + csrf_token}, status=400)
+        return JsonResponse({'message': 'It Broke'}, status=400)
     
 
     def register(request):
