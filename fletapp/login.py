@@ -14,6 +14,7 @@ def main(page : ft.Page):
         #print(password.value)
         payload = {'username':'username.value','password':'password.value'}
         r = requests.post("http://127.0.0.1:8000/user/login/", data=payload)
+        print(payload)
         print(r.text)
         print(r.status_code)
         print("Send")

@@ -18,8 +18,21 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 26 Oct 2ND Sprint Start Meeting
+### 1 Nov Backend Meeting
 <details open>
+<summary>Deciding the Backk end future</summary>
+
+Google Firebase instead of django
+- Reason:
+    - easier
+    - cloud hosting (No need for Open own server)
+
+
+
+</details>
+
+### 26 Oct 2ND Sprint Start Meeting
+<details>
 <summary>Sprint Start Meeting</summary>
 
 - Scrum process
