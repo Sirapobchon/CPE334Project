@@ -22,7 +22,7 @@ For subject CPE334, KMUTT
 <details open>
 <summary>Deciding the Back-end future</summary>
 
-Change to Google Firebase instead of django
+### Change to Google Firebase instead of django
 - Reason:
     - easier
     - cloud hosting (No need for open own server)

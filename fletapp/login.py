@@ -1,12 +1,27 @@
 import flet as ft
 import requests
 import math
-#from django.contrib.auth import authenticate,login
-import firebase_admin
-from firebase_admin import credentials
 
+#firebase cloud
+import firebase_admin
+from firebase_admin import firestore, credentials
 cred = credentials.Certificate("./firebase/serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
+
+fireconfig = {
+    "apiKey": "AIzaSyDqZPzZ_U_DqJkcQFXpUeFGtvFLCo9AFEg",
+    "authDomain": "project334-cdc82.firebaseapp.com",
+    "databaseURL": "https://project334-cdc82-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "projectId": "project334-cdc82",
+    "storageBucket": "project334-cdc82.appspot.com",
+    "messagingSenderId": "829383491724",
+    "appId": "1:829383491724:web:de3ba959db852dfb7bfba9",
+    "measurementId": "G-0DJK0YKSJ5"
+    }
+
+import pyrebase
+firebase = pyrebase.initialize_app(fireconfig)
+auth = firebase.auth()
+#db = firestore.client()
 
 def main(page : ft.Page):
     #page.theme_mode = ft.ThemeMode.LIGHT
@@ -14,18 +29,19 @@ def main(page : ft.Page):
     page.bgcolor ="#86e3ce"
     page.padding = 0
 
+    listFromFirebase = ft.Column(
+            auto_scroll=True,
+            scroll="always",
+        )
+
     def post(e):
-        list
-        """
-        print(username.value)
-        print(password.value)
-        payload = {'username':'username.value','password':'password.value'}
-        r = requests.post("http://127.0.0.1:8000/user/login/", data=payload)
-        print(payload)
-        print(r.text)
-        print(r.status_code)
-        print("Send")
-        """
+        try:
+            auth.sign_in_with_email_and_password(
+                username.value, password.value)
+            print ("Success")
+        except:
+            page.add(ft.Text("Wrong username or password"))
+            print("Wrong username or password")
     page.update()
 
     username = ft.TextField(
