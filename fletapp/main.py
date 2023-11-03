@@ -9,4 +9,6 @@ def main(page: ft.Page):
     page.window_max_width = 410
     page.window_width = 800
     page.window_max_height = 780
-    page.window_height = 780 
+    page.window_height = 780
+
+    
