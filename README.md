@@ -18,8 +18,66 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 1 Nov Backend Meeting
+### 3 Nov Meeting
 <details open>
+<summary>Update Codebase</summary>
+
+- Main connecting page
+    - @EXer07 and @Sirapobchon
+    - Use main.py to connect to homepage, login, signup, todo, tobuy, and calendar
+
+- @everyone Whoever is free, start making a report
+    - Report Requirement
+    - Abstract
+    - Problem Definition
+        - Functional Requirement - Done
+        - Use-case Diagram
+        - Use-case Narrative
+    - Architectural Design
+        1. Tools
+            - Diagram Drawing Tools
+                - Visual-Paradigm
+            - Source Control Management
+                - Gitub
+            - UI Design Tools
+                - Canvas
+            - IDE
+                - VS Code with extension
+            - Compile
+                - Andriod Studio
+        2. Computing Languages
+            - Python
+                - Flet UI
+            - Google Firebase
+                - Firebase Backend
+        3. Component and User Interface
+    - Other Design Elements
+        1. Activites Diagram
+        2. Sequence Diagram
+        3. Package Diagram
+        4. Database Diagram
+    - Development Process
+    - Self-Evaluation
+    - Appendix
+
+- Backend table by @Sirapobchon and @pppcyd
+    - Authticate (User sign-in) - 2/2 Done
+    - ToDo Data - 0/1
+    - ToBuy Data - 0/1
+    - Calendar - 0/2
+    - Data Connection - 0/2
+    - Total 2/8
+
+- Scrum process
+    - @EXer07 Notification - 3
+    - @janekmutt Forget Password Page - 1
+    - @EXer07 and @Sirapobchon Firebase Server - 8 remain 6
+    - @WangSonicS Calendar that can hold reminders - 8
+
+</details>
+
+### 1 Nov Backend Meeting
+<details>
 <summary>Deciding the Back-end future</summary>
 
 ### Change to Google Firebase instead of django
@@ -40,7 +98,7 @@ For subject CPE334, KMUTT
 
 - Scrum process
     -  Sprints
-        - 26 Oct - 2 Nov
+        - 26 Oct - 9 Nov
             - Scoring and Scrum Planning
             - @pppcyd To Buy-list - 3
             - @janekmutt Value Calculator - 2
@@ -48,6 +106,8 @@ For subject CPE334, KMUTT
             - @WangSonicS Calendar that can hold reminders - 8
             - @EXer07 and @Sirapobchon backend stuff for all page - alot
             - @everyone Whoever is free, start making a report
+        - 9 Nov - 22 Nov
+        - 22 Nov - 28 Nov
     
 - The work should be completed more than 80% because if not it will not be completed in time.
 
