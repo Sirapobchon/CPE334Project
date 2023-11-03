@@ -25,7 +25,7 @@ def main(page : Page):
 
 #####################################################################################
     def create(e):
-        if password_1.value == password_2.value:
+        if password_1.value == password_2.value : #and password_1 != auth.get_account_info(Email.value):
             try:
                 auth.create_user_with_email_and_password(
                     Email.value, password_1.value)
@@ -34,6 +34,7 @@ def main(page : Page):
                 page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
                 page.update()
                 print("Wrong username or password")
+        #elif 
         else:
             print("Passwords is not the same")
     page.update()
