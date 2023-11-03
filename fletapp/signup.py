@@ -20,8 +20,11 @@ auth = firebase.auth()
 
 def main(page : Page):
     page.title="Register"
+    page.bgcolor="black"
     page.bgcolor ="#86e3ce"
     page.window_width = 350
+    page.padding = 0
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
 #####################################################################################
     def create(e):
@@ -77,8 +80,8 @@ def main(page : Page):
             rotation=math.pi / 3,
             colors=["#86e3ce","#d0e6a5","#ffde95","#fa897b","#ccabd8"],
             ),
-        width=320,
-        height=750,
+        width=600,
+        height=800,
         bgcolor="#ffffff",
         border_radius=10,
         content=Column(
