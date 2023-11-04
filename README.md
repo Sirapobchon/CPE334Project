@@ -16,6 +16,15 @@ For subject CPE334, KMUTT
 - Group chat messaging system
 - Map location with GPS tracking
 
+# Installation
+- Planned Apk file implementation
+- Source code config
+    - extension
+    ```pip install flet```
+    ```pip install ```
+    - pull repository
+    ```git ```
+
 # Progress update
 
 ### 3 Nov Meeting
