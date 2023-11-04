@@ -26,17 +26,42 @@ def main(page : ft.Page):
     page.title="Login"
     page.bgcolor ="#86e3ce"
     page.padding = 0
-
+    page.window_width = 350
+    
+    success_dlg = ft.AlertDialog(
+        title=ft.Text("Sign in sucessfully",
+                      
+                      size=16,
+                      color="#539165",
+                      text_align="center",
+                      ), on_dismiss=lambda e: print("Success Dialog dismissed!")
+    )
+    wrong_dlg = ft.AlertDialog(
+        title=ft.Text("Wrong username or password",
+                      
+                      size=16,
+                      color="#C70039",
+                      text_align="center",
+                      ), on_dismiss=lambda e: print("Wrong Dialog dismissed!")
+    )
+    def open_success_dlg(e):
+        page.dialog = success_dlg
+        success_dlg.open = True
+        page.update()
+    def open_wrong_dlg(e):
+        page.dialog = wrong_dlg
+        wrong_dlg.open = True
+        page.update()    
 #############################################################################
     def post(e):
         try:
             auth.sign_in_with_email_and_password(
                 Email.value, password.value)
-            print ("Success")
+            open_success_dlg(e)
         except:
             page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
             page.update()
-            print("Wrong username or password")
+            open_wrong_dlg(e)
     page.update()
 ##############################################################################
     
@@ -48,6 +73,7 @@ def main(page : ft.Page):
         ),
         border_radius=40,
         border_color=ft.colors.BLACK,
+        focused_border_color=ft.colors.ORANGE_700,
     )
 
     password = ft.TextField(

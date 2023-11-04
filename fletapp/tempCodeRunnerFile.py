@@ -1,0 +1,1 @@
+page.window_width = 350

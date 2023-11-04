@@ -57,7 +57,7 @@ def main(page : Page):
         page.dialog = dlg
         dlg.open = True
         page.update()
-    def open_sucess_dlg(e):
+    def open_success_dlg(e):
         page.dialog = success_dlg
         success_dlg.open = True
         page.update()
@@ -71,7 +71,7 @@ def main(page : Page):
             try:
                 auth.create_user_with_email_and_password(
                     Email.value, password_1.value)
-                open_sucess_dlg(e)
+                open_success_dlg(e)
             except:
                 page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
                 page.update()
@@ -97,6 +97,8 @@ def main(page : Page):
         border_radius=40,
         border_color=colors.BLACK,
         focused_border_color=colors.ORANGE_700,
+        password=True,
+        can_reveal_password=True,
         text_style=TextStyle(
         color="#000000",
         )
@@ -107,6 +109,8 @@ def main(page : Page):
         border_radius=40,
         border_color=colors.BLACK,
         focused_border_color=colors.ORANGE_700,
+        password=True,
+        can_reveal_password=True,
         text_style=TextStyle(
             color="#000000",
         )
