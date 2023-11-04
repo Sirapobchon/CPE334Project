@@ -19,11 +19,26 @@ For subject CPE334, KMUTT
 # Installation
 - Planned Apk file implementation
 - Source code config
-    - extension
-    ```pip install flet```
-    ```pip install ```
-    - pull repository
-    ```git ```
+    - Virtual Environment
+        - It is best to setup a virtual but if you don't want to then, You do you.
+        - Please setup venv outside of the repository ```cd ..```
+        ```Shell
+        python -m venv /path-to-virtual-environment
+        ```
+    - Cloning Repository
+        - Install git and select the location you want to save the project
+        ```Shell
+        git clone https://github.com/Sirapobchon/CPE334Project.git
+        ```
+    - Extension
+        - Flet for UI
+        ```Shell
+        pip install flet
+        ```
+        - Pyrebase for Google Firebase
+        ```Shell
+        pip install pyrebase4
+        ```
 
 # Progress update
 
