@@ -3,6 +3,7 @@ from flet import *
 # from flet_route import Params,Basket
 import math
 import pyrebase
+from fastapi import FastAPI
 
 fireconfig = {
     "apiKey": "AIzaSyDqZPzZ_U_DqJkcQFXpUeFGtvFLCo9AFEg",
@@ -26,20 +27,58 @@ def main(page : Page):
     page.padding = 0
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
+    dlg = ft.AlertDialog(
+        #Container(
+            #margin=margin.only(left=70,right=10,top=20),
+            content=ft.Text("Please enter the same password",
+                      size=16,
+                      color="#C70039",
+                      text_align="center",
+                      ), on_dismiss=lambda e: print("Dialog dismissed!")
+        #)
+    )
+    success_dlg = ft.AlertDialog(
+        title=ft.Text("Sign up sucessfully",
+                      
+                      size=16,
+                      color="#539165",
+                      text_align="center",
+                      ), on_dismiss=lambda e: print("Success Dialog dismissed!")
+    )
+    wrong_dlg = ft.AlertDialog(
+        title=ft.Text("Wrong username or password",
+                      
+                      size=16,
+                      color="#C70039",
+                      text_align="center",
+                      ), on_dismiss=lambda e: print("Wrong Dialog dismissed!")
+    )
+    def open_dlg(e):
+        page.dialog = dlg
+        dlg.open = True
+        page.update()
+    def open_sucess_dlg(e):
+        page.dialog = success_dlg
+        success_dlg.open = True
+        page.update()
+    def open_wrong_dlg(e):
+        page.dialog = wrong_dlg
+        wrong_dlg.open = True
+        page.update()    
 #####################################################################################
     def create(e):
         if password_1.value == password_2.value : #and password_1 != auth.get_account_info(Email.value):
             try:
                 auth.create_user_with_email_and_password(
                     Email.value, password_1.value)
-                print ("Success")
+                open_sucess_dlg(e)
             except:
                 page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
                 page.update()
-                print("Wrong username or password")
+                open_wrong_dlg(e)
         #elif 
         else:
-            print("Passwords is not the same")
+            open_dlg(e)
     page.update()
 ####################################################################################
 
