@@ -62,7 +62,14 @@ class TimeLine(ft.UserControl):
       )
   
 
-body = ft.Container(
+class home(UserControl):
+  def __init__(self,page):
+    super().__init__()
+    self.page = page
+
+
+  def build(self):
+    return ft.Container(
   ft.Stack([
     ft.Container(
       alignment=ft.alignment.center,
@@ -280,40 +287,4 @@ body = ft.Container(
   width = 800,
   height = 800, 
 )
-
-#defining the main func.
-def main(page: ft.page):
-  
-  page.fonts = {
-        "SF Pro": "https://raw.githubusercontent.com/google/fonts/master/ofl/sfprodisplay/SFProDisplay-Bold.ttf",
-  }
-
-  page.theme = Theme(font_family="SF Pro")
-  page.window_max_width = 410
-  page.window_width = 800
-  page.window_max_height = 800
-  page.window_height = 800
-  page.bgcolor = "#86E3CE"
-  
-    
-  page.navigation_bar = ft.NavigationBar(bgcolor = "#fe96a5",selected_index=2,
-    destinations=[
-      ft.NavigationDestination(icon=ft.icons.CHECK, ),
-      ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG, ),
-      ft.NavigationDestination(icon=ft.icons.HOME, ),
-      ft.NavigationDestination(icon=ft.icons.CALCULATE,),
-      ft.NavigationDestination(icon=ft.icons.PERSON, ),
-    ]
-  )
-  
-  page.scroll ="auto"
-
-  page.padding = 0
-  
-  page.add(ft.SafeArea(body)
-)
-
-#starting the app
-ft.app(target = main)
-
 

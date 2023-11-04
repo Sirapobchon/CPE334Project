@@ -2,8 +2,8 @@ import flet as ft
 import math
 
 #firebase cloud
-from firebase_admin import credentials
-cred = credentials.Certificate("./firebase/serviceAccountKey.json")
+#from firebase_admin import credentials
+#cred = credentials.Certificate("./firebase/serviceAccountKey.json")
 
 fireconfig = {
     "apiKey": "AIzaSyDqZPzZ_U_DqJkcQFXpUeFGtvFLCo9AFEg",
