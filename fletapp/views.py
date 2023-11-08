@@ -1,5 +1,5 @@
 from flet import *
-from homepage import home
+from homepage import Home
 #import todo
 #import tobuy
 #import signup
@@ -10,7 +10,7 @@ def views(page):
         '/': View(
             route='/',
             controls=[
-                home(page)
+                Home(page)
             ]
         ),
         

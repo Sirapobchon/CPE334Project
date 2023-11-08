@@ -62,11 +62,10 @@ class TimeLine(ft.UserControl):
       )
   
 
-class home(UserControl):
+class Home(UserControl):
   def __init__(self,page):
     super().__init__()
     self.page = page
-
 
   def build(self):
     return ft.Container(
@@ -76,7 +75,6 @@ class home(UserControl):
       width=395,
       height=640,
       top=70,
-      
       bgcolor='#FFFBEB',
       border_radius=ft.border_radius.only(30, 30,30,30)
     ),
