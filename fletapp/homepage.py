@@ -1,5 +1,5 @@
 # importing the library
-from flet import *
+
 import flet as ft
 import datetime 
 import threading as th
@@ -14,7 +14,7 @@ class TimeLine(ft.UserControl):
 
 		self.field_date = ft.Text(
 			self.date,
-			text_align= TextAlign.CENTER,
+			text_align= ft.TextAlign.CENTER,
 			color = 'Black',
 			size = 24,
 			weight = 'bold',
@@ -60,9 +60,31 @@ class TimeLine(ft.UserControl):
 			height = 100,
 			alignment = ft.alignment.center
 			)
-	
 
-class Home(UserControl):
+class ChangeNav(ft.UserControl):
+	def __init__(self,page):
+		super().__init__()
+		self.page = page
+
+		self.tab_1 = lambda _: self.page.go('/')
+		self.tab_2 = lambda _: self.page.go('/')
+		self.tab_3 = lambda _: self.page.go('/')
+		self.tab_4 = lambda _: self.page.go('/')
+		self.tab_5 = lambda _: self.page.go('/login')
+
+	def changetab(self,e):
+		index = e.control.selected_index
+		self.tab_1.visible = True if index == 0 else False
+		self.tab_2.visible = True if index == 1 else False
+		self.tab_3.visible = True if index == 2 else False
+		self.tab_4.visible = True if index == 3 else False
+		self.tab_5.visible = True if index == 4 else False
+		self.page.update()
+
+	def build(self):
+		return ft.text()
+
+class Home(ft.UserControl):
 	def __init__(self,page):
 		super().__init__()
 		self.page = page
@@ -278,7 +300,7 @@ class Home(UserControl):
 
 		ft.Container(
 			alignment=ft.alignment.bottom_center,
-			margin=ft.margin.only(bottom=30),
+			margin=ft.margin.only(bottom=10),
 			content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=2,
 				destinations=[
 					ft.NavigationDestination(icon=ft.icons.CHECK),
@@ -286,10 +308,12 @@ class Home(UserControl):
 					ft.NavigationDestination(icon=ft.icons.HOME),
 					ft.NavigationDestination(icon=ft.icons.CALCULATE),
 					ft.NavigationDestination(icon=ft.icons.PERSON),
-				]
+				],
+				on_change=ChangeNav,
 			),
 		)
-	]
+
+		]
 	),
 	gradient = ft.LinearGradient(
 		begin = ft.alignment.top_center,

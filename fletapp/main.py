@@ -5,6 +5,7 @@ def main(page: ft.Page):
     
     #defining the fonts
     page.fonts = {
+        "Kanit": "https://raw.githubusercontent.com/google/fonts/master/ofl/kanit/Kanit-Bold.ttf",
         "SF Pro": "https://raw.githubusercontent.com/google/fonts/master/ofl/sfprodisplay/SFProDisplay-Bold.ttf",
     }
     
@@ -19,6 +20,8 @@ def main(page: ft.Page):
     page.scroll = ft.ScrollMode.HIDDEN
     page.padding = 0
     page.bgcolor = "#ddf7f1"
+
+    page.theme = ft.Theme(font_family="SF Pro")
 
     def route_change(route):
         print(page.route)

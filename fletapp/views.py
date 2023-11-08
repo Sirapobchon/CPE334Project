@@ -1,9 +1,9 @@
 from flet import *
 from homepage import Home
-#import todo
+#from todo import main
 #import tobuy
 #import signup
-#import login
+from login import LoginMain
 
 def views(page):
     return {
@@ -14,10 +14,10 @@ def views(page):
             ]
         ),
         
-        '/secondpage': View(
-            route='/secondpage/',
+        '/todo': View(
+            route='/todo/',
             controls=[
-                #todo.todo(page)
+                #main(page)
             ]
         ),
         '/thirdpage': View(
@@ -35,7 +35,7 @@ def views(page):
         '/login': View(
             route='/login/',
             controls=[
-                #login.login(page)
+                LoginMain(page)
             ]
         )
     }

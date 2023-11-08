@@ -193,7 +193,7 @@ class TodoApp(ft.UserControl):
 
 
 
-async def main(page: ft.Page):
+async def main(page):
     page.title = "To Do App"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.scroll = ft.ScrollMode.HIDDEN
@@ -245,6 +245,3 @@ async def main(page: ft.Page):
 
     # create app control and add it to the page
     await page.add_async(c2)
-
-
-ft.app(main)

@@ -21,79 +21,83 @@ firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
 #db = firestore.client()
 
-def main(page : ft.Page):
-    #page.theme_mode = ft.ThemeMode.LIGHT
-    page.title="Login"
-    page.bgcolor ="#86e3ce"
-    page.padding = 0
-    page.window_width = 350
-    
-    success_dlg = ft.AlertDialog(
-        title=ft.Text("Sign in sucessfully",
-                      
-                      size=16,
-                      color="#539165",
-                      text_align="center",
-                      ), on_dismiss=lambda e: print("Success Dialog dismissed!")
-    )
-    wrong_dlg = ft.AlertDialog(
-        title=ft.Text("Wrong username or password",
-                      
-                      size=16,
-                      color="#C70039",
-                      text_align="center",
-                      ), on_dismiss=lambda e: print("Wrong Dialog dismissed!")
-    )
-    def open_success_dlg(e):
-        page.dialog = success_dlg
-        success_dlg.open = True
-        page.update()
-    def open_wrong_dlg(e):
-        page.dialog = wrong_dlg
-        wrong_dlg.open = True
-        page.update()    
+#page.theme_mode = ft.ThemeMode.LIGHT
+#page.title="Login"
+#page.bgcolor ="#86e3ce"
+#page.padding = 0
+#page.window_width = 350
+
+# Variable 
+success_dlg = ft.AlertDialog(
+    title=ft.Text("Sign in sucessfully",
+                    
+                    size=16,
+                    color="#539165",
+                    text_align="center",
+                    ), on_dismiss=lambda e: print("Success Dialog dismissed!")
+)
+
+wrong_dlg = ft.AlertDialog(
+    title=ft.Text("Wrong username or password",
+                    
+                    size=16,
+                    color="#C70039",
+                    text_align="center",
+                    ), on_dismiss=lambda e: print("Wrong Dialog dismissed!")
+)
+
+Email = ft.TextField(
+    label="E-mail",
+    text_style=ft.TextStyle(
+        size=14,
+        color="#000000",
+    ),
+    border_radius=40,
+    border_color=ft.colors.BLACK,
+    focused_border_color=ft.colors.ORANGE_700,
+)
+
+password = ft.TextField(
+    label="Password",
+    text_style = ft.TextStyle(
+        size=14,
+        color="#000000",
+    ),
+    password=True,
+    can_reveal_password=True,
+    border_radius=40,
+    border_color=ft.colors.BLACK,
+    focused_border_color=ft.colors.ORANGE_700,
+)
+
+def open_success_dlg():
+    #page.dialog = success_dlg
+    success_dlg.open = True
+def open_wrong_dlg():
+    #page.dialog = wrong_dlg
+    wrong_dlg.open = True
 #############################################################################
-    def post(e):
-        try:
-            auth.sign_in_with_email_and_password(
-                Email.value, password.value)
-            open_success_dlg(e)
-        except:
-            page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
-            page.update()
-            open_wrong_dlg(e)
-    page.update()
+def post(page,Email,password):
+    try:
+        auth.sign_in_with_email_and_password(
+            Email.value, password.value)
+        open_success_dlg()
+    except:
+        #page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
+        #page.update()
+        open_wrong_dlg()
 ##############################################################################
-    
-    Email = ft.TextField(
-        label="E-mail",
-        text_style=ft.TextStyle(
-            size=14,
-            color="#000000",
-        ),
-        border_radius=40,
-        border_color=ft.colors.BLACK,
-        focused_border_color=ft.colors.ORANGE_700,
-    )
 
-    password = ft.TextField(
-        label="Password",
-        text_style = ft.TextStyle(
-            size=14,
-            color="#000000",
-        ),
-        password=True,
-        can_reveal_password=True,
-        border_radius=40,
-        border_color=ft.colors.BLACK,
-        focused_border_color=ft.colors.ORANGE_700,
-    )
+def forgetpass():
+    print("Forget Password")
 
-    def forgetpass(e):
-        print("Forget Password")
-    page.update()
+class LoginMain(ft.UserControl):
+	def __init__(self,page):
+		super().__init__()
+		self.page = page
 
-    login = ft.SafeArea(ft.Container(
+	def build(self):
+		return ft.SafeArea(ft.Container(
         #image_src="signinbg.jpg",
         
         #image_fit=ImageFit.NONE,
@@ -183,7 +187,7 @@ def main(page : ft.Page):
                         style=ft.ButtonStyle(
 
                         ),
-                        on_click=forgetpass,
+                        on_click=forgetpass(),
                     )
                 ),
                 ft.Container(
@@ -198,14 +202,10 @@ def main(page : ft.Page):
                             bgcolor=ft.colors.ORANGE_700,
                             shape={}
                         ),
-                        on_click=post,
+                        on_click=post(self,Email,password),
                     )
                 )
             ]
         ),
     )
 )
-
-    page.add(login)
-
-ft.app(target=main)
