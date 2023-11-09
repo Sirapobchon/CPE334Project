@@ -42,8 +42,41 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 3 Nov Meeting
+### 9 Nov Sprint End Meeting and Start 3rd Sprint
 <details open>
+<summary>2nd Sprint End Meeting and Start 3rd Sprint</summary>
+
+- Current 2nd Sprint Work for Each Member
+    - @EXer07 and @Sirapobchon Page Connection - 8
+        - @EXer07 *Navigation Bar connection problem*
+        - https://youtu.be/1at0ZZF24Hs?si=jC8EpQAn1wn5Hy3O
+    - @janekmutt Forget Password Page - 1 and Account Page - 3
+    - @pppcyd *To Do and Buy connection problem* - 3
+    - @WangSonicS Calendar Page - 8
+
+- Backend table by @Sirapobchon and @pppcyd
+    - Authticate (User sign-in) - 2/2 Done
+    - ToDo Data - 0/1
+    - ToBuy Data - 0/1
+    - Calendar - 0/2
+    - Data Connection - 0/2
+    - Total 2/8
+
+- Scrum process
+    - sprint
+        - 9 Nov - 22 Nov
+            - @EXer07 Connect To Do and To Buy with Async
+            - @pppcyd Change NaviBar and Backend Variable
+            - @janekmutt Forget Password Page - 1, Account Page - 3
+            - @Sirapobchon Firebase Server - 8 remain 6
+            - @Sirapobchon Connect Calculator
+            - @WangSonicS Calendar that can hold reminders - 8
+        - 22 Nov - 28 Nov
+
+</details>
+
+### 3 Nov Progress Update Meeting
+<details>
 <summary>Update Codebase</summary>
 
 - Main connecting page
