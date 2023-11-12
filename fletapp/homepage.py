@@ -20,7 +20,6 @@ class TimeLine(ft.UserControl):
 			weight = 'bold',
 		)
 
-		
 		self.field_time = ft.Text(
 			self.time,
 			color = 'Black',
@@ -62,27 +61,21 @@ class TimeLine(ft.UserControl):
 			)
 
 class ChangeNav(ft.UserControl):
-	def __init__(self,page):
-		super().__init__()
-		self.page = page
+    def __init__(self, page, selected_index):
+        super().__init__()
+        self.page = page
+        self.index = selected_index
 
-		self.tab_1 = lambda _: self.page.go('/')
-		self.tab_2 = lambda _: self.page.go('/')
-		self.tab_3 = lambda _: self.page.go('/')
-		self.tab_4 = lambda _: self.page.go('/')
-		self.tab_5 = lambda _: self.page.go('/login')
+    def changetab(self):
+        destinations = ['/', '/', '/', '/calculator', '/login']
+        destination_url = destinations[self.index]
+        self.page.go(destination_url)
 
-	def changetab(self,e):
-		index = e.control.selected_index
-		self.tab_1.visible = True if index == 0 else False
-		self.tab_2.visible = True if index == 1 else False
-		self.tab_3.visible = True if index == 2 else False
-		self.tab_4.visible = True if index == 3 else False
-		self.tab_5.visible = True if index == 4 else False
-		self.page.update()
+    def build(self):
+        print(self.index)  # Note: This print statement should be inside the build method
+        return None  # You need to return something from the build method, even if it's None
 
-	def build(self):
-		return ft.text()
+
 
 class Home(ft.UserControl):
 	def __init__(self,page):
@@ -309,7 +302,7 @@ class Home(ft.UserControl):
 					ft.NavigationDestination(icon=ft.icons.CALCULATE),
 					ft.NavigationDestination(icon=ft.icons.PERSON),
 				],
-				on_change=ChangeNav,
+                on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
 			),
 		)
 

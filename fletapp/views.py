@@ -2,6 +2,7 @@ from flet import *
 from homepage import Home
 #from todo import main
 #import tobuy
+from calculator_new import Calculate
 #import signup
 from login import LoginMain
 
@@ -24,6 +25,12 @@ def views(page):
             route='/thirdpage/',
             controls=[
                 #tobuy.tobuy(page)
+            ]
+        ),
+        '/calculator': View(
+            route='/calculator/',
+            controls=[
+                Calculate(page).build_container()
             ]
         ),
         '/signup': View(
