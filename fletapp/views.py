@@ -1,7 +1,7 @@
 from flet import *
 from homepage import Home
 #from todo import main
-#import tobuy
+from tobuy_new import ToBuyMain
 from calculator_new import Calculate
 #import signup
 from login import LoginMain
@@ -24,7 +24,7 @@ def views(page):
         '/thirdpage': View(
             route='/thirdpage/',
             controls=[
-                #tobuy.tobuy(page)
+                ToBuyMain(page)
             ]
         ),
         '/calculator': View(

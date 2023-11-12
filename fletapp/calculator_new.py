@@ -113,7 +113,26 @@ class Calculate:
                         cost_per_unit_value,
                     ])
                 ),
-                ft.Container(
+                
+            ]),
+            ft.Container(
+                    alignment=ft.alignment.bottom_center,
+                    margin=ft.margin.only(bottom=10),
+                    content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=3,
+                        destinations=[
+                            ft.NavigationDestination(icon=ft.icons.CHECK),
+                            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
+                            ft.NavigationDestination(icon=ft.icons.HOME),
+                            ft.NavigationDestination(icon=ft.icons.CALCULATE),
+                            ft.NavigationDestination(icon=ft.icons.PERSON),
+                        ],
+                        on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
+                    ),
+                ),
+            width=350
+        )
+
+        nav_bar = ft.Container(
                     alignment=ft.alignment.bottom_center,
                     margin=ft.margin.only(bottom=10),
                     content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=3,
@@ -127,9 +146,6 @@ class Calculate:
                         on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
                     ),
                 )
-            ]),
-            width=350
-        )
 
         c2 = ft.SafeArea(ft.Container(
             gradient=ft.LinearGradient(
