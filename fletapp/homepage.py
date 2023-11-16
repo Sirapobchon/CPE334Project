@@ -55,7 +55,7 @@ class TimeLine(ft.UserControl):
 					margin = ft.margin.only(top = 10),
 				)
 			],spacing = 0),
-			width = 300,
+			width = 320,
 			height = 100,
 			alignment = ft.alignment.center
 			)
@@ -75,8 +75,6 @@ class ChangeNav(ft.UserControl):
         print(self.index)  # Note: This print statement should be inside the build method
         return None  # You need to return something from the build method, even if it's None
 
-
-
 class Home(ft.UserControl):
 	def __init__(self,page):
 		super().__init__()
@@ -85,51 +83,60 @@ class Home(ft.UserControl):
 	def build(self):
 		return ft.Container(
 	ft.Stack([
+		# Top off the page
 		ft.Container(
-			alignment=ft.alignment.center,
-			width=395,
-			height=640,
-			top=70,
-			bgcolor='#FFFBEB',
-			border_radius=ft.border_radius.only(30, 30,30,30),
+			alignment = ft.alignment.top_left,
+			margin = ft.margin.only(left=16,top=4),
+			content = ft.Text ("Hello!", color='#FFFFFF', size = 32, weight = "bold",),
+		),
+		ft.Container(
+			alignment = ft.alignment.top_left,
+			margin = ft.margin.only(left=16,top=44),
+			content = ft.Text ("have a nice day", color='#FFFFFF', size = 16,)
+		),
+		
+		# Main content
+		ft.Container(
+			alignment=ft.alignment.bottom_center,
+			margin = ft.margin.only(top=80),
+			bgcolor = ft.colors.with_opacity(0.8, '#FFFFFF'),
+			border_radius=ft.border_radius.only(30,30,0,0),
+			content=ft.Column(
+				
+			)
 		),
 
+		# Timeline Box
 		ft.Container(
-			margin = ft.margin.only(left=10),
-			content = ft.Text ("Hello!", color='#FFFFFF', size = 30, weight = "bold",),
-		),
-
-		ft.Container(
-			margin = ft.margin.only(left=10),
-			top=40,
-			content = ft.Text ("have a nice day", color='#FFFFFF', size = 15,)
-		),
-
-		ft.Container(
-			
 			content = TimeLine(),
-			alignment=ft.alignment.center,
-			top=90,
-			width=345,
-			left=25,
+			alignment = ft.alignment.top_center,
+			margin = ft.margin.only(left=25,right=25,top=100),
+			#top=100,
+			#width=345,
+			#left=25,
 			height=115,
 			gradient = ft.LinearGradient(
 				begin = ft.alignment.top_left,
 				end = ft.alignment.bottom_right,
 				colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
 			),
-			blur=ft.Blur(10, 12, ft.BlurTileMode.REPEATED),
+			#blur=ft.Blur(10, 10, ft.BlurTileMode.REPEATED),
 			padding=ft.padding.only(0, 15, 0, 15),
 			border_radius=10,
 			
 		),
 
+		# Button to other pages
 		ft.Container(
 			width = 162,
 			height = 200, 
-			top = 220,
+			top = 230,
 			left = 25,
-			alignment = ft.alignment.center,
+
+			#on_hover = ,
+			on_click = lambda _: self.page.go('/login'),
+			alignment = ft.alignment.top_center,
+			#margin = ft.margin.only(left=25,top=230),
 			padding = ft.padding.all(10),
 			gradient = ft.LinearGradient(
 				begin = ft.alignment.top_left,
@@ -138,10 +145,9 @@ class Home(ft.UserControl):
 			), 
 			border_radius= ft.border_radius.all(30),
 			content = ft.Column([
-
 				ft.Column([
 					ft.Row([
-						ft.Image(src = "assets/check-box_icon-icons.com_72816.png", 
+						ft.Image(src = "../assets/check-box_icon-icons.com_72816.png", 
 								 width = 70, height = 90),
 					], alignment=ft.MainAxisAlignment.CENTER),
 
@@ -150,8 +156,9 @@ class Home(ft.UserControl):
 								color = "black",
 								size = 15,
 								weight = 'bold',
-								style = ft.ButtonStyle(color = "white",
-																			 padding = 10)
+								style = ft.ButtonStyle(
+									color = "white",
+									padding = 10)
 						),
 					], alignment=ft.MainAxisAlignment.CENTER),
 				], spacing = 1),
@@ -160,19 +167,22 @@ class Home(ft.UserControl):
 					ft.Text(value = "'To Do List' is like a time management tool with a lot more fun built in.",
 								color = "#424949",
 								size = 11,
-								style = ft.ButtonStyle(color = "white",
-																			 padding = 10)
+								style = ft.ButtonStyle(
+									color = "white",
+									padding = 10)
 								),
 				]),       
-		], spacing = 7), 
+			], spacing = 7), 
 		),
 		
 		ft.Container(
 			width = 162,
 			height = 200, 
-			top = 220,
+			top = 230,
 			left = 208,
-			alignment = ft.alignment.center,
+			on_click = lambda e: self.page.go('/tobuy'),
+			alignment = ft.alignment.bottom_center,
+			#margin = ft.margin.only(right=25,top=230),
 			padding = ft.padding.all(10),
 			gradient = ft.LinearGradient(
 				begin = ft.alignment.top_left,
@@ -185,7 +195,7 @@ class Home(ft.UserControl):
 				ft.Column([
 					ft.Row([
 						ft.Image(
-								 src = "assets/2849824-basket-buy-market-multimedia-shop-shopping-store_107977.png", 
+								 src = "../assets/2849824-basket-buy-market-multimedia-shop-shopping-store_107977.png", 
 								 width = 90, height = 90),
 								 ], alignment=ft.MainAxisAlignment.CENTER),
 				
@@ -201,18 +211,19 @@ class Home(ft.UserControl):
 				ft.Text(value = "A shopping list: the only list that makes your wallet shed a tear",
 								color = "#424949",
 								size = 11,
-								style = ft.ButtonStyle(color = "white",
-																			 padding = 10)
-								),
-								
-		], spacing = 7), 
+								style = ft.ButtonStyle(
+									color = "white",
+									padding = 10)
+								),				
+			], spacing = 7), 
 		),
 
 		ft.Container(
 			width = 162,
 			height = 200, 
-			top = 430,
+			top = 450,
 			left = 25,
+			on_click = lambda e: self.page.go('/calculator'),
 			alignment = ft.alignment.center,
 			padding = ft.padding.all(10),
 			gradient = ft.LinearGradient(
@@ -225,7 +236,7 @@ class Home(ft.UserControl):
 				ft.Column([
 					ft.Row([
 						ft.Image(
-								 src = "/assets/seo-social-web-network-internet_92_icon-icons.com_61528.png", 
+								 src = "../assets/seo-social-web-network-internet_92_icon-icons.com_61528.png", 
 								 width = 90, height = 90),
 								 ], alignment=ft.MainAxisAlignment.CENTER),
 
@@ -235,7 +246,7 @@ class Home(ft.UserControl):
 								size = 15,
 								weight = 'bold',
 								style = ft.ButtonStyle(color = "white",
-																			 padding = 10)
+									padding = 10)
 								),
 					], alignment=ft.MainAxisAlignment.CENTER),
 				], spacing = 1),
@@ -243,16 +254,17 @@ class Home(ft.UserControl):
 				ft.Text(value = "Your personal mathematician",
 								color = "#424949",
 								size = 11,
-								style = ft.ButtonStyle(color = "white",
-																			padding = 10)
+								style = ft.ButtonStyle(
+									color = "white",
+									padding = 10)
 								),
-		], spacing = 7), 
+			], spacing = 7), 
 		),
 
 		ft.Container(
 			width = 162,
 			height = 200, 
-			top = 430,
+			top = 450,
 			left = 208,
 			alignment = ft.alignment.center,
 			padding = ft.padding.all(10),
@@ -266,7 +278,7 @@ class Home(ft.UserControl):
 				 ft.Column([
 					 ft.Row([
 						ft.Image( 
-								src = "assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
+								src = "../assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
 								width = 70, height = 90),
 								 ], alignment=ft.MainAxisAlignment.CENTER),
 				
@@ -275,8 +287,9 @@ class Home(ft.UserControl):
 								color = "black",
 								size = 15,
 								weight = 'bold',
-								style = ft.ButtonStyle(color = "white",
-																			 padding = 10)
+								style = ft.ButtonStyle(
+									color = "white",
+									padding = 10)
 								),
 				], alignment=ft.MainAxisAlignment.CENTER),
 				], spacing = 1),
@@ -285,15 +298,16 @@ class Home(ft.UserControl):
 				ft.Text(value = "Your calendar is your compass; let it lead you to your dreams.",
 								color = "#424949",
 								size = 11,
-								style = ft.ButtonStyle(color = "white",
-																			 padding = 10)
+								style = ft.ButtonStyle(
+									color = "white",
+									padding = 10)
 								),
-		], spacing = 7), 
+			], spacing = 7), 
 		),
 
 		ft.Container(
 			alignment=ft.alignment.bottom_center,
-			margin=ft.margin.only(bottom=10),
+			margin=ft.margin.only(bottom=-10),
 			content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=2,
 				destinations=[
 					ft.NavigationDestination(icon=ft.icons.CHECK),
@@ -313,8 +327,9 @@ class Home(ft.UserControl):
 		end = ft.alignment.bottom_center,
 		colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
 	),
-	width = 800,
-	height = 800,
+	width = 480,
+	height = 760,
 	padding = 0,
+	border_radius=5,
 )
 

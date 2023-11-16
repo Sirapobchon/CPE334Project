@@ -10,8 +10,8 @@ def main(page: ft.Page):
     }
     
     #defining the window size
-    page.window_min_width = 420
-    page.window_width = 420
+    page.window_min_width = 425
+    page.window_width = 425
     page.window_min_height = 820
     page.window_height = 820
 
