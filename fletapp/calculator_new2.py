@@ -15,7 +15,7 @@ class ChangeNav(ft.UserControl):
         print(self.index)  # Note: This print statement should be inside the build method
         return None  # You need to return something from the build method, even if it's None
 
-class CalculatorLogic:
+class CalculatorLogic(ft.UserControl):
     def cal_cost_per_unit(self, cost, unit):
         return ("%.3f" % round(cost / unit, 3))
 
@@ -65,105 +65,104 @@ class CalculatorLogic:
                 )
             )
 
-class Calculate:
+class Tempfile():
+    #self.cost_per_unit_value = ft.Text("", size=20)
+    #self.product_container = ft.Column(scroll="auto")
+    #    self.quantity = ft.TextField(
+    #        hint_text="Total of Compare product prices",
+    #        on_change=lambda e: self.calculator_logic.add_price(self.product_container, self.quantity),
+    #        border_radius=40,
+    #        color="BLACK",
+    #        bgcolor="WHITE",
+    #        border_color="#FA987B",
+    #        focused_border_color="#CCABD8",
+    #        width=300,
+    #    )
+    
+    def plan(self, page):
+        return None
+
+class Calculator(ft.UserControl):
     def __init__(self, page):
-        # Initialize any variables or settings needed for the page
+        super().__init__()
         self.page = page
-        self.calculator_logic = CalculatorLogic()
+        self.calculator_logic = CalculatorLogic
+        
+    def build(self):
+        return ft.SafeArea(
+    ft.Container(
+        ft.Column([
+            # Header
+            ft.Row([
+                ft.Container(
+                    width=40,
+                    margin=ft.margin.only(top=10,left=10),
+                    content=ft.TextButton(
+                        "<",
+                        style=ft.ButtonStyle(color="#7D7C7C"),
+                        on_click=lambda e: self.page.go('/'),  
+                    )
+                ),
+                ft.Text("Price Comparison",
+                    size=30, 
+                    weight="bold",
+                    color="#000000"
+                ),
+                ft.Container(
+                    width=40,
+                ),
+            ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+            
+            ft.Row([
+                ft.ElevatedButton("Reset", 
+                    bgcolor="white", 
+                    color="#424949",
+                    #on_click=lambda e: self.calculator_logic.reset(product_container, cost_per_unit_value, quantity), width=120
+                ),
+                ft.ElevatedButton("Calculate", 
+                    bgcolor="red", 
+                    color="white",
+                    #on_click=lambda e: self.calculator_logic.calculate(product_container, cost_per_unit_value), width=120
+                ),
+            ], alignment=ft.MainAxisAlignment.CENTER),
+            #cost_per_unit_value,
 
-    def build_container(self):
-        quantity = ft.TextField(
-            hint_text="Total of Compare product prices",
-            on_change=lambda e: self.calculator_logic.add_price(product_container, quantity),
-            border_radius=40,
-            color="BLACK",
-            bgcolor="WHITE",
-            border_color="#FA987B",
-            focused_border_color="#CCABD8",
-            width=300,
-        )
-
-        cost_per_unit_value = ft.Text("", size=20)
-
-        product_container = ft.Column(scroll="auto")
-
-        worthiness = ft.Container(
             ft.Stack([
                 ft.Container(
-                    theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
-					theme_mode=ft.ThemeMode.LIGHT,
-                    alignment=ft.alignment.center,
-                    content=ft.Column([
-                        ft.Row([
-                            ft.Text("Price Comparison", size=30, weight="bold", ),
-                        ], alignment=ft.MainAxisAlignment.CENTER),
-
-                        ft.Row([
-                            quantity
-                        ], alignment=ft.MainAxisAlignment.CENTER),
-                        ft.Row([
-                            product_container,
-                        ], alignment=ft.MainAxisAlignment.CENTER),
-                        ft.Row([
-                            ft.ElevatedButton("Reset", bgcolor="white", color="#424949",
-                                              on_click=lambda e: self.calculator_logic.reset(product_container, cost_per_unit_value, quantity), width=120),
-                            ft.ElevatedButton("Calculate", bgcolor="red", color="white",
-                                              on_click=lambda e: self.calculator_logic.calculate(product_container, cost_per_unit_value), width=120),
-                        ], alignment=ft.MainAxisAlignment.CENTER),
-                        cost_per_unit_value,
-                    ])
+                    alignment=ft.alignment.bottom_center,
+                    margin=ft.margin.only(bottom=10),
+                    content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=3,
+                        destinations=[
+                            ft.NavigationDestination(icon=ft.icons.CHECK),
+                            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
+                            ft.NavigationDestination(icon=ft.icons.HOME),
+                            ft.NavigationDestination(icon=ft.icons.CALCULATE),
+                            ft.NavigationDestination(icon=ft.icons.PERSON),
+                        ],
+                        on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
+                    ),
                 ),
-                
             ]),
-            ft.Container(
-                    alignment=ft.alignment.bottom_center,
-                    margin=ft.margin.only(bottom=10),
-                    content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=3,
-                        destinations=[
-                            ft.NavigationDestination(icon=ft.icons.CHECK),
-                            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
-                            ft.NavigationDestination(icon=ft.icons.HOME),
-                            ft.NavigationDestination(icon=ft.icons.CALCULATE),
-                            ft.NavigationDestination(icon=ft.icons.PERSON),
-                        ],
-                        on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
-                    ),
-                ),
-            width=350
-        )
+        ]),
+        
+        theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
+        theme_mode=ft.ThemeMode.LIGHT,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=[
+                "#ddf7f1",
+                "#f2f8e6",
+                "#fff5e1",
+                "#feddda",
+                "#f1e7f5",
+            ],
+            tile_mode=ft.GradientTileMode.MIRROR,
+        ),
+        width=800,
+        border_radius=10,
+        height=760,
+        #expand=True,
+    ),
+)
 
-        nav_bar = ft.Container(
-                    alignment=ft.alignment.bottom_center,
-                    margin=ft.margin.only(bottom=10),
-                    content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=3,
-                        destinations=[
-                            ft.NavigationDestination(icon=ft.icons.CHECK),
-                            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
-                            ft.NavigationDestination(icon=ft.icons.HOME),
-                            ft.NavigationDestination(icon=ft.icons.CALCULATE),
-                            ft.NavigationDestination(icon=ft.icons.PERSON),
-                        ],
-                        on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
-                    ),
-                )
-
-        c2 = ft.SafeArea(ft.Container(
-            gradient=ft.LinearGradient(
-                begin=ft.alignment.top_center,
-                end=ft.alignment.bottom_center,
-                colors=[
-                    "#ddf7f1",
-                    "#f2f8e6",
-                    "#fff5e1",
-                    "#feddda",
-                    "#f1e7f5",
-                ],
-                tile_mode=ft.GradientTileMode.MIRROR,
-            ),
-            width=800,
-            height=2000,
-            expand=True,
-            content=worthiness
-        ))
-
-        return c2

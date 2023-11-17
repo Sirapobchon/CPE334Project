@@ -84,6 +84,7 @@ class LoginMain(ft.UserControl):
 		)
 
 	def build(self):
+		#self.page.add(self.Email)
 		return ft.SafeArea(ft.Container(
 		#image_src="signinbg.jpg",
 		
@@ -116,7 +117,7 @@ class LoginMain(ft.UserControl):
 							content=ft.TextButton(
 								"<",
 								style=ft.ButtonStyle(color="#7D7C7C"),
-								on_click=lambda e: self.page.go('/'),  # Navigate back to the previous page
+								on_click=lambda e: self.page.go('/'),  
 							)
 						),
 						ft.Container(

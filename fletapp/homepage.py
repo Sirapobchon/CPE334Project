@@ -355,7 +355,7 @@ class Home(ft.UserControl):
             colors=['#86E3CE', '#D6E6A5', '#FFDD94', '#FA897B', '#CCABD8']
         ),
         #width=480,
-        #height=760,
+        height=760,
         padding=0,
         border_radius=5,
     )

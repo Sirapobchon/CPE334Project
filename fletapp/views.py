@@ -2,7 +2,7 @@ from flet import *
 from homepage import Home
 #from todo import main
 from tobuy_new import ToBuyMain
-from calculator_new import Calculate
+from calculator_new2 import Calculator
 #import signup
 from login import LoginMain
 
@@ -30,7 +30,7 @@ def views(page):
         '/calculator': View(
             route='/calculator/',
             controls=[
-                Calculate(page).build_container()
+                Calculator(page)
             ]
         ),
         '/signup': View(
