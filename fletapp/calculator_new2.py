@@ -16,13 +16,19 @@ class ChangeNav(ft.UserControl):
         return None  # You need to return something from the build method, even if it's None
 
 class CalculatorLogic(ft.UserControl):
+    def __init__(self, calculator, value):
+        super().__init__()
+        self.page = calculator.page
+        self.value = value
+        self.product_container = calculator.product_container
+
     def cal_cost_per_unit(self, cost, unit):
         return ("%.3f" % round(cost / unit, 3))
 
-    def calculate(self, product_container, cost_per_unit_value):
+    def calculate(self, cost_per_unit_value):
         product_data = {}
         cost_per_unit_value.value = ""
-        for i, control in enumerate(product_container.controls, start=1):
+        for i, control in enumerate(self.product_container.controls, start=1):
             cost = int(control.content.controls[1].value)
             unit = int(control.content.controls[2].value)
             cost_per_unit = self.cal_cost_per_unit(cost, unit)
@@ -36,8 +42,8 @@ class CalculatorLogic(ft.UserControl):
                 f"Product {i} = {cost_per_unit} Cost/Unit\n"
             )
 
-    def reset(self, product_container, cost_per_unit_value, quantity):
-        product_container.controls.clear()
+    def reset(self, cost_per_unit_value, quantity):
+        self.product_container.controls.clear()
         cost_per_unit_value.value = ""
         if not quantity.value:
             return
@@ -46,11 +52,13 @@ class CalculatorLogic(ft.UserControl):
             my_dict = {"quantity": quantity.value}
             quantity.value = ""  # clear the value of quantity
             return my_dict
-
-    def add_price(self, product_container, quantity):
-        product_container.controls.clear()
-        for i, x in enumerate(range(1, int(quantity.value) + 1), start=1):
-            product_container.controls.append(
+    
+    def add_price(self):
+        print(f"product_container: {self.product_container.controls}")
+        self.product_container.controls.clear()
+        print(f"After Clear: {self.product_container.controls}")
+        for i,x in enumerate(range(1, int(self.value) + 1), start=1):
+            self.product_container.controls.append(
                 ft.Container(
                     alignment=ft.alignment.center,
                     padding=10,
@@ -64,30 +72,23 @@ class CalculatorLogic(ft.UserControl):
                     ])
                 )
             )
-
-class Tempfile():
-    #self.cost_per_unit_value = ft.Text("", size=20)
-    #self.product_container = ft.Column(scroll="auto")
-    #    self.quantity = ft.TextField(
-    #        hint_text="Total of Compare product prices",
-    #        on_change=lambda e: self.calculator_logic.add_price(self.product_container, self.quantity),
-    #        border_radius=40,
-    #        color="BLACK",
-    #        bgcolor="WHITE",
-    #        border_color="#FA987B",
-    #        focused_border_color="#CCABD8",
-    #        width=300,
-    #    )
+        print(f"In For: {self.product_container.controls}")
+        self.page.update()
     
-    def plan(self, page):
-        return None
-
 class Calculator(ft.UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
-        self.calculator_logic = CalculatorLogic
-        
+        self.product_container = ft.Column(scroll="auto")
+        self.calculator_logic = CalculatorLogic(self,0)
+    
+    def handle_slider_change(self, event):
+        self.calculator_logic.value = event.control.value
+        print(f"Input Value: {self.calculator_logic.value}")
+        self.calculator_logic.add_price()
+        print(f"Out For: {self.product_container.controls}")
+        self.page.update()
+
     def build(self):
         return ft.SafeArea(
     ft.Container(
@@ -113,6 +114,23 @@ class Calculator(ft.UserControl):
                 ),
             ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
             
+            ft.Row([
+                ft.Slider(
+                    width=300,
+                    min=0,
+                    max=10,
+                    divisions=10,
+                    value=0,
+                    label="{value}",
+                    on_change=lambda e: self.handle_slider_change(e),
+                )
+            ],alignment=ft.MainAxisAlignment.CENTER),
+            
+            ft.Row(
+                controls=[self.product_container],
+                alignment=ft.MainAxisAlignment.CENTER),
+                
+
             ft.Row([
                 ft.ElevatedButton("Reset", 
                     bgcolor="white", 

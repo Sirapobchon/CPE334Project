@@ -17,7 +17,7 @@ def main(page: ft.Page):
 
     page.title = "Project 334 Appication"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.scroll = ft.ScrollMode.HIDDEN
+    #page.scroll = ft.ScrollMode.HIDDEN
     page.padding = 0
     page.bgcolor = "#ddf7f1"
 
@@ -33,6 +33,6 @@ def main(page: ft.Page):
         page.update()
             
     page.on_route_change = route_change
-    page.go('/')
+    page.go('/calculator')
 
 ft.app(target = main)
