@@ -11,9 +11,9 @@ def main(page: ft.Page):
     
     #defining the window size
     page.window_min_width = 425
-    page.window_width = 425
+    #page.window_width = 425
     page.window_min_height = 820
-    page.window_height = 820
+    #page.window_height = 820
 
     page.title = "Project 334 Appication"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER

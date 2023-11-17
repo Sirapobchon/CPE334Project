@@ -97,7 +97,7 @@ class LoginMain(ft.UserControl):
 
 		#bgcolor="#ffffff",
 		border_radius=10,
-		height=800,
+		height=760,
 		theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
 		theme_mode=ft.ThemeMode.LIGHT,
 		content=ft.Column(

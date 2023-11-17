@@ -81,255 +81,282 @@ class Home(ft.UserControl):
 		self.page = page
 
 	def build(self):
-		return ft.Container(
-	ft.Stack([
-		# Top off the page
-		ft.Container(
-			alignment = ft.alignment.top_left,
-			margin = ft.margin.only(left=16,top=4),
-			content = ft.Text ("Hello!", color='#FFFFFF', size = 32, weight = "bold",),
-		),
-		ft.Container(
-			alignment = ft.alignment.top_left,
-			margin = ft.margin.only(left=16,top=44),
-			content = ft.Text ("have a nice day", color='#FFFFFF', size = 16,)
-		),
-		
-		# Main content
-		ft.Container(
-			alignment=ft.alignment.bottom_center,
-			margin = ft.margin.only(top=80),
-			bgcolor = ft.colors.with_opacity(0.8, '#FFFFFF'),
-			border_radius=ft.border_radius.only(30,30,0,0),
-			content=ft.Column(
-				
-			)
-		),
+		return ft.SafeArea(
+    ft.Container(
+		ft.Column([
+            # Top off the page
+            ft.Row([
+                ft.Container(
+                    alignment=ft.alignment.top_left,
+                    margin=ft.margin.only(left=10),
+                    content=ft.Text("Hello!", color='#FFFFFF', size=32, weight="bold"),
+                )
+            ]),
+            ft.Row([
+                ft.Container(
+                    alignment=ft.alignment.top_left,
+                    margin=ft.margin.only(left=10, top=-10),
+                    content=ft.Text("have a nice day", color='#FFFFFF', size=16),
+                ),
+            ]),
 
-		# Timeline Box
-		ft.Container(
-			content = TimeLine(),
-			alignment = ft.alignment.top_center,
-			margin = ft.margin.only(left=25,right=25,top=100),
-			#top=100,
-			#width=345,
-			#left=25,
-			height=115,
-			gradient = ft.LinearGradient(
-				begin = ft.alignment.top_left,
-				end = ft.alignment.bottom_right,
-				colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-			),
-			#blur=ft.Blur(10, 10, ft.BlurTileMode.REPEATED),
-			padding=ft.padding.only(0, 15, 0, 15),
-			border_radius=10,
+            # Main content
+            ft.Row([
+                ft.Container(
+                    alignment=ft.alignment.bottom_center,
+                    margin=ft.margin.only(left=8, right=8),
+                    bgcolor=ft.colors.with_opacity(0.8, '#FFFFFF'),
+                    border_radius=ft.border_radius.only(30, 30, 30, 30),
+                    content=ft.Column([
+                        ft.Row([
+                            # Timeline Box
+                            ft.Container(
+                                content=TimeLine(),
+                                alignment=ft.alignment.top_center,
+                                margin=ft.margin.only(left=25, right=25, top=25),
+                                height=115,
+                                gradient=ft.LinearGradient(
+                                    begin=ft.alignment.top_left,
+                                    end=ft.alignment.bottom_right,
+                                    colors=['#86E3CE', '#D6E6A5', '#FFDD94', '#FA897B', '#CCABD8']
+                                ),
+                                padding=ft.padding.only(0, 15, 0, 15),
+                                border_radius=10,
+                            ),
+                        ]),
+						
+                        # Button to other pages
+                        ft.Row([
+							ft.Column([
+								ft.Container(
+                                    width=160,
+                                    height=200,
+                                    #top=230,
+                                    #left=25,
+                                    margin=ft.margin.only(left=20),
+                                    on_click=lambda _: self.page.go('/login'),
+                                    alignment=ft.alignment.top_center,
+                                    padding=ft.padding.all(10),
+                                    gradient=ft.LinearGradient(
+                                        begin=ft.alignment.top_left,
+                                        end=ft.alignment.bottom_right,
+                                        colors=['#86E3CE', '#D6E6A5', '#FFDD94', '#FA897B', '#CCABD8']
+                                    ),
+                                    border_radius=ft.border_radius.all(30),
+                                    content=ft.Column([
+                                            ft.Row([
+                                                ft.Image(
+                                                    src="../assets/check-box_icon-icons.com_72816.png",
+                                                    width=70, height=90
+                                                ),
+                                            ],alignment=ft.MainAxisAlignment.CENTER),
+                                            ft.Row([
+                                                ft.Text(
+                                                    value="To Do List",
+                                                    color="black",
+                                                    size=15,
+                                                    weight='bold',
+                                                    style=ft.ButtonStyle(
+                                                        color="white",
+                                                        padding=10
+                                                    )
+                                                ),
+                                            ],alignment=ft.MainAxisAlignment.CENTER),
+                                            ft.Text(
+                                                value = "'To Do List' is like a time management tool with a lot more fun built in.",
+                                                color = "#424949",
+                                                size = 11,
+                                                style = ft.ButtonStyle(
+                                                    color = "white",
+                                                    padding = 10)
+                                                ),
+                                        ],
+                                        spacing=1
+                                    ),
+                                ),
+                            ]),
+
+                            ft.Column([
+                                ft.Container(
+                                    width=160,
+                                    height=200,
+                                    #top=230,
+                                    #left=208,
+                                    margin=ft.margin.only(right=20),
+                                    on_click=lambda _: self.page.go('/tobuy'),
+                                    alignment=ft.alignment.bottom_center,
+                                    padding=ft.padding.all(10),
+                                    gradient=ft.LinearGradient(
+                                        begin=ft.alignment.top_left,
+                                        end=ft.alignment.bottom_right,
+                                        colors=['#86E3CE', '#D6E6A5', '#FFDD94', '#FA897B', '#CCABD8']
+                                    ),
+                                    border_radius=ft.border_radius.all(30),
+                                    content=ft.Column([
+                                            ft.Row([
+                                                ft.Image(
+                                                    src="../assets/2849824-basket-buy-market-multimedia-shop-shopping-store_107977.png",
+                                                    width=90, height=90
+                                                ),
+                                            ],alignment=ft.MainAxisAlignment.CENTER),
+                                            ft.Row([
+                                                ft.Text(
+                                                    value="Shopping List",
+                                                    color="black",
+                                                    size=15,
+                                                    weight='bold',
+                                                ),
+                                            ],alignment=ft.MainAxisAlignment.CENTER),
+                                            ft.Text(
+                                                value="A shopping list: the only list that makes your wallet shed a tear",
+                                                color="#424949",
+                                                size=11,
+                                                style=ft.ButtonStyle(
+                                                    color="white",
+                                                    padding=10
+                                                )
+                                            ),
+                                        ],
+                                    ),
+                                ),
+							]),
+                        ]),
+						
+                        ft.Row([
+							ft.Column([
+                                ft.Container(
+                                    width = 162,
+                                    height = 200, 
+                                    #top = 450,
+                                    #left = 25,
+                                    margin=ft.margin.only(left=20),
+                                    on_click = lambda _: self.page.go('/calculator'),
+                                    alignment = ft.alignment.center,
+                                    padding = ft.padding.all(10),
+                                    gradient = ft.LinearGradient(
+                                        begin = ft.alignment.top_left,
+                                        end = ft.alignment.bottom_right,
+                                        colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
+                                    ), 
+                                    border_radius= ft.border_radius.all(30),
+                                    content = ft.Column([
+                                        ft.Column([
+                                            ft.Row([
+                                                ft.Image(
+                                                        src = "../assets/seo-social-web-network-internet_92_icon-icons.com_61528.png", 
+                                                        width = 90, height = 90),
+                                                        ], alignment=ft.MainAxisAlignment.CENTER),
+
+                                            ft.Row([
+                                                ft.Text(value = "Calculator",
+                                                        color = "black",
+                                                        size = 15,
+                                                        weight = 'bold',
+                                                        style = ft.ButtonStyle(color = "white",
+                                                            padding = 10)
+                                                        ),
+                                            ], alignment=ft.MainAxisAlignment.CENTER),
+                                        ], spacing = 1),
+
+                                        ft.Text(value = "Your personal mathematician",
+                                                        color = "#424949",
+                                                        size = 11,
+                                                        style = ft.ButtonStyle(
+                                                            color = "white",
+                                                            padding = 10)
+                                                        ),
+                                    ], spacing = 7
+                                    ),
+                                ),
+                            ]),
+
+                            ft.Column([
+                                ft.Container(
+                                    width = 162,
+                                    height = 200, 
+                                    #top = 450,
+                                    #left = 208,
+                                    margin=ft.margin.only(right=20),
+									on_click = lambda _: self.page.go('/'),
+                                    alignment = ft.alignment.center,
+                                    padding = ft.padding.all(10),
+                                    gradient = ft.LinearGradient(
+                                        begin = ft.alignment.top_left,
+                                        end = ft.alignment.bottom_right,
+                                        colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
+                                    ), 
+                                    border_radius= ft.border_radius.all(30),
+                                    content = ft.Column([
+                                        ft.Column([
+                                            ft.Row([
+                                                ft.Image( 
+                                                        src = "../assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
+                                                        width = 70, height = 90),
+                                                        ], alignment=ft.MainAxisAlignment.CENTER),
+                                        
+                                        ft.Row([
+                                            ft.Text(value = "Calendar",
+                                                        color = "black",
+                                                        size = 15,
+                                                        weight = 'bold',
+                                                        style = ft.ButtonStyle(
+                                                            color = "white",
+                                                            padding = 10)
+                                                        ),
+                                        ], alignment=ft.MainAxisAlignment.CENTER),
+                                        ], spacing = 1),
+                                    
+
+                                        ft.Text(value = "Your calendar is your compass; let it lead you to your dreams.",
+                                                        color = "#424949",
+                                                        size = 11,
+                                                        style = ft.ButtonStyle(
+                                                            color = "white",
+                                                            padding = 10)
+                                                        ),
+                                    ], spacing = 7), 
+                                ),
+							]),
+                        ]),
+						
+                        ft.Row([
+                            ft.Container(
+                                height=20,
+                            )
+                        ])  
+                    ])
+                ),
+            ]),
 			
-		),
+            # Navigation Bar
+            ft.Stack([
+				ft.Container(
+                    alignment=ft.alignment.bottom_center,
+                    margin=ft.margin.only(bottom=-10),
+                    content=ft.NavigationBar(
+                        bgcolor="#fe96a5",
+                        selected_index=2,
+                        destinations=[
+                            ft.NavigationDestination(icon=ft.icons.CHECK),
+                            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
+                            ft.NavigationDestination(icon=ft.icons.HOME),
+                            ft.NavigationDestination(icon=ft.icons.CALCULATE),
+                            ft.NavigationDestination(icon=ft.icons.PERSON),
+                        ],
+                        on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
+                    ),
+                ),
+            ])
+        ]),
 
-		# Button to other pages
-		ft.Container(
-			width = 162,
-			height = 200, 
-			top = 230,
-			left = 25,
-
-			#on_hover = ,
-			on_click = lambda _: self.page.go('/login'),
-			alignment = ft.alignment.top_center,
-			#margin = ft.margin.only(left=25,top=230),
-			padding = ft.padding.all(10),
-			gradient = ft.LinearGradient(
-				begin = ft.alignment.top_left,
-				end = ft.alignment.bottom_right,
-				colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-			), 
-			border_radius= ft.border_radius.all(30),
-			content = ft.Column([
-				ft.Column([
-					ft.Row([
-						ft.Image(src = "../assets/check-box_icon-icons.com_72816.png", 
-								 width = 70, height = 90),
-					], alignment=ft.MainAxisAlignment.CENTER),
-
-					ft.Row([
-						ft.Text(value = "To Do List",
-								color = "black",
-								size = 15,
-								weight = 'bold',
-								style = ft.ButtonStyle(
-									color = "white",
-									padding = 10)
-						),
-					], alignment=ft.MainAxisAlignment.CENTER),
-				], spacing = 1),
-				
-				ft.Column([
-					ft.Text(value = "'To Do List' is like a time management tool with a lot more fun built in.",
-								color = "#424949",
-								size = 11,
-								style = ft.ButtonStyle(
-									color = "white",
-									padding = 10)
-								),
-				]),       
-			], spacing = 7), 
-		),
-		
-		ft.Container(
-			width = 162,
-			height = 200, 
-			top = 230,
-			left = 208,
-			on_click = lambda e: self.page.go('/tobuy'),
-			alignment = ft.alignment.bottom_center,
-			#margin = ft.margin.only(right=25,top=230),
-			padding = ft.padding.all(10),
-			gradient = ft.LinearGradient(
-				begin = ft.alignment.top_left,
-				end = ft.alignment.bottom_right,
-				colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-			), 
-			border_radius= ft.border_radius.all(30),
-			content = ft.Column([
-
-				ft.Column([
-					ft.Row([
-						ft.Image(
-								 src = "../assets/2849824-basket-buy-market-multimedia-shop-shopping-store_107977.png", 
-								 width = 90, height = 90),
-								 ], alignment=ft.MainAxisAlignment.CENTER),
-				
-					ft.Row([
-						ft.Text(value = "Shopping List",
-								color = "black",
-								size = 15,
-								weight = 'bold',
-								),
-						], alignment=ft.MainAxisAlignment.CENTER),
-				], spacing = 1),
-				
-				ft.Text(value = "A shopping list: the only list that makes your wallet shed a tear",
-								color = "#424949",
-								size = 11,
-								style = ft.ButtonStyle(
-									color = "white",
-									padding = 10)
-								),				
-			], spacing = 7), 
-		),
-
-		ft.Container(
-			width = 162,
-			height = 200, 
-			top = 450,
-			left = 25,
-			on_click = lambda e: self.page.go('/calculator'),
-			alignment = ft.alignment.center,
-			padding = ft.padding.all(10),
-			gradient = ft.LinearGradient(
-				begin = ft.alignment.top_left,
-				end = ft.alignment.bottom_right,
-				colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-			), 
-			border_radius= ft.border_radius.all(30),
-			content = ft.Column([
-				ft.Column([
-					ft.Row([
-						ft.Image(
-								 src = "../assets/seo-social-web-network-internet_92_icon-icons.com_61528.png", 
-								 width = 90, height = 90),
-								 ], alignment=ft.MainAxisAlignment.CENTER),
-
-					ft.Row([
-						ft.Text(value = "Calculator",
-								color = "black",
-								size = 15,
-								weight = 'bold',
-								style = ft.ButtonStyle(color = "white",
-									padding = 10)
-								),
-					], alignment=ft.MainAxisAlignment.CENTER),
-				], spacing = 1),
-
-				ft.Text(value = "Your personal mathematician",
-								color = "#424949",
-								size = 11,
-								style = ft.ButtonStyle(
-									color = "white",
-									padding = 10)
-								),
-			], spacing = 7), 
-		),
-
-		ft.Container(
-			width = 162,
-			height = 200, 
-			top = 450,
-			left = 208,
-			alignment = ft.alignment.center,
-			padding = ft.padding.all(10),
-			gradient = ft.LinearGradient(
-				begin = ft.alignment.top_left,
-				end = ft.alignment.bottom_right,
-				colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-			), 
-			border_radius= ft.border_radius.all(30),
-			content = ft.Column([
-				 ft.Column([
-					 ft.Row([
-						ft.Image( 
-								src = "../assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
-								width = 70, height = 90),
-								 ], alignment=ft.MainAxisAlignment.CENTER),
-				
-				ft.Row([
-					ft.Text(value = "Calendar",
-								color = "black",
-								size = 15,
-								weight = 'bold',
-								style = ft.ButtonStyle(
-									color = "white",
-									padding = 10)
-								),
-				], alignment=ft.MainAxisAlignment.CENTER),
-				], spacing = 1),
-			 
-
-				ft.Text(value = "Your calendar is your compass; let it lead you to your dreams.",
-								color = "#424949",
-								size = 11,
-								style = ft.ButtonStyle(
-									color = "white",
-									padding = 10)
-								),
-			], spacing = 7), 
-		),
-
-		ft.Container(
-			alignment=ft.alignment.bottom_center,
-			margin=ft.margin.only(bottom=-10),
-			content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=2,
-				destinations=[
-					ft.NavigationDestination(icon=ft.icons.CHECK),
-					ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
-					ft.NavigationDestination(icon=ft.icons.HOME),
-					ft.NavigationDestination(icon=ft.icons.CALCULATE),
-					ft.NavigationDestination(icon=ft.icons.PERSON),
-				],
-                on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
-			),
-		)
-
-		]
-	),
-	gradient = ft.LinearGradient(
-		begin = ft.alignment.top_center,
-		end = ft.alignment.bottom_center,
-		colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-	),
-	width = 480,
-	height = 760,
-	padding = 0,
-	border_radius=5,
+        gradient=ft.LinearGradient(
+            begin=ft.alignment.top_center,
+            end=ft.alignment.bottom_center,
+            colors=['#86E3CE', '#D6E6A5', '#FFDD94', '#FA897B', '#CCABD8']
+        ),
+        #width=480,
+        #height=760,
+        padding=0,
+        border_radius=5,
+    )
 )
-
