@@ -89,7 +89,6 @@ class Task(ft.UserControl):
     async def delete_clicked(self, e):
         await self.task_delete(self)
 
-
 class ToBuyApp(ft.UserControl):
     def __init__(self, page):
         super().__init__()
