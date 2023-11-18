@@ -21,8 +21,8 @@ def views(page):
                 #main(page)
             ]
         ),
-        '/thirdpage': View(
-            route='/thirdpage/',
+        '/tobuy': View(
+            route='/tobuy/',
             controls=[
                 ToBuyMain(page)
             ]

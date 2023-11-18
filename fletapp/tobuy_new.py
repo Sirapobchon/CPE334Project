@@ -189,18 +189,6 @@ class ToBuyApp(ft.UserControl):
         self.items_left.value = f"{count}  item(s) to buy left"
         await super().update_async()
 
-    def build(self):
-        # Return the controls that make up your ToBuyApp here
-        return [
-            self.new_task,
-            self.new_buy,
-            self.filter,
-            self.tasks,
-            self.items_left,
-            self.total,
-        ]
-
-
 class ChangeNav(ft.UserControl):
     def __init__(self, page, selected_index):
         super().__init__()
@@ -225,44 +213,106 @@ class ToBuyMain(ft.UserControl):
         await self.page.add_async(self.build())
 
     def build(self):
-        c2 = ft.SafeArea(ft.Container(
-            alignment=ft.alignment.center,
-            gradient=ft.LinearGradient(
-                begin=ft.alignment.top_center,
-                end=ft.alignment.bottom_center,
-                colors=[
-                    "#ddf7f1",
-                    "#f2f8e6",
-                    "#fff5e1",
-                    "#feddda",
-                    "#f1e7f5",
-                ],
-                tile_mode=ft.GradientTileMode.MIRROR,
-            ),
-            width=800,
-            height=2000,
-            expand=True,
-            content=ToBuyApp(self.page)
-        )
-        )
+        return ft.SafeArea(
+            ft.Container(
+                alignment=ft.alignment.center,
+                gradient=ft.LinearGradient(
+                    begin=ft.alignment.top_center,
+                    end=ft.alignment.bottom_center,
+                    colors=[
+                        "#ddf7f1",
+                        "#f2f8e6",
+                        "#fff5e1",
+                        "#feddda",
+                        "#f1e7f5",
+                    ],
+                    tile_mode=ft.GradientTileMode.MIRROR,
+                ),
+                width=800,
+                height=2000,
+                expand=True,
+                theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
+		        theme_mode=ft.ThemeMode.LIGHT,
+                content=ft.Column(
+                    alignment=ft.alignment.center,
+                    width=380,
+                    expand=True,
+                    #scroll="END",
+                    #height=1000,
+                    controls=[
+                            ft.Row([
+                                ft.Container(
+                                width=40,
+                                margin=ft.margin.only(top=10,left=10),
+                                content=ft.TextButton(
+                                    "<",
+                                    style=ft.ButtonStyle(color="#7D7C7C"),
+                                    on_click=lambda e: self.page.go('/'),  
+                                )
+                            ),
+                            ft.Text(
+                                value="To Buy List",
+                                size=25,
+                                weight=ft.FontWeight.BOLD,
+                                color="#000000"
+                            ),
+                            ft.Container(
+                                width=40,
+                            ),
+                        ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                        ft.Row(
+                            controls=[
+                                ToBuyApp(self).new_task,
+                                ToBuyApp(self).new_buy,
+                                ft.FloatingActionButton(
+                                    icon=ft.icons.ADD,
 
-        nav_bar = ft.Container(
-            alignment=ft.alignment.bottom_center,
-            margin=ft.margin.only(bottom=10),
-            content=ft.NavigationBar(bgcolor="#fe96a5", selected_index=1,
-                                     destinations=[
-                                         ft.NavigationDestination(icon=ft.icons.CHECK),
-                                         ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
-                                         ft.NavigationDestination(icon=ft.icons.HOME),
-                                         ft.NavigationDestination(icon=ft.icons.CALCULATE),
-                                         ft.NavigationDestination(icon=ft.icons.PERSON),
-                                     ],
-                                     on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
-                                     )
+                                    shape=ft.CircleBorder(),
+                                    bgcolor="#F69CB4",
+                                    on_click=ToBuyApp(self).add_clicked,
+                                ),
+                            ],
+                        ),
+                        ft.Column(
+                            spacing=25,
+                            controls=[
+                                ToBuyApp(self).filter,
+                                ToBuyApp(self).tasks,
+                                ft.Row(
+                                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                                    vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                                    controls=[
+                                        ToBuyApp(self).items_left,
+                                        ft.OutlinedButton(
+                                            text="Clear completed", on_click=ToBuyApp(self).clear_clicked
+                                        ),
+                                    ],
+                                ),
+                            ],
+                        ),
+                        ft.Row(
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            controls=[ToBuyApp(self).total],
+                        ),
+                        ft.Stack([
+                        ft.Container(
+                            alignment=ft.alignment.bottom_center,
+                            margin=ft.margin.only(bottom=10),
+                            content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=1,
+                                destinations=[
+                                    ft.NavigationDestination(icon=ft.icons.CHECK),
+                                    ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
+                                    ft.NavigationDestination(icon=ft.icons.HOME),
+                                    ft.NavigationDestination(icon=ft.icons.CALCULATE),
+                                    ft.NavigationDestination(icon=ft.icons.PERSON),
+                                ],
+                                on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
+                            ),
+                        ),
+                    ]),
+                    ],
+                )
+            )
         )
-
-        # Return a list of controls instead of using controls keyword argument
-        return [c2, nav_bar]
-
 
         

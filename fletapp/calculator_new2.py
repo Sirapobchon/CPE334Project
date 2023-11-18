@@ -7,7 +7,7 @@ class ChangeNav(ft.UserControl):
         self.index = selected_index
 
     def changetab(self):
-        destinations = ['/', '/', '/', '/calculator', '/login']
+        destinations = ['/', '/tobuy', '/', '/calculator', '/login']
         destination_url = destinations[self.index]
         self.page.go(destination_url)
 
