@@ -73,7 +73,7 @@ class CalculatorLogic(ft.UserControl):
                 )
             )
         print(f"In For: {self.product_container.controls}")
-        self.page.update()
+        self.update()
     
 class Calculator(ft.UserControl):
     def __init__(self, page):
@@ -87,7 +87,7 @@ class Calculator(ft.UserControl):
         print(f"Input Value: {self.calculator_logic.value}")
         self.calculator_logic.add_price()
         print(f"Out For: {self.product_container.controls}")
-        self.page.update()
+        self.update()
 
     def build(self):
         return ft.SafeArea(
