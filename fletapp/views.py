@@ -5,6 +5,7 @@ from tobuy_new import ToBuyMain
 from calculator_new2 import Calculator
 #import signup
 from login import LoginMain
+from forgetpass import ForgetMain
 
 def views(page):
     return {
@@ -44,5 +45,12 @@ def views(page):
             controls=[
                 LoginMain(page)
             ]
-        )
+        ),
+        '/forgetpass': View(
+            route='/forgetpass/',
+            controls=[
+                ForgetMain(page)
+            ]
+        ),
+        
     }

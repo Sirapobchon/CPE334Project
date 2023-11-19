@@ -58,9 +58,6 @@ def post(page,Email,password):
 		open_wrong_dlg()
 ##############################################################################
 
-def forgetpass():
-	print("Forget Password")
-
 class LoginMain(ft.UserControl):
 	def __init__(self, page):
 		super().__init__()
@@ -183,7 +180,7 @@ class LoginMain(ft.UserControl):
 					content=ft.TextButton(
 						"Forgot Password?" ,
 						style=ft.ButtonStyle(),
-						on_click=forgetpass,
+						on_click=lambda e: self.page.go('/forgetpass'),
 					)
 				),
 				ft.Container(
