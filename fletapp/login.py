@@ -46,7 +46,7 @@ def open_success_dlg():
 def open_wrong_dlg():
 	#page.dialog = wrong_dlg
 	wrong_dlg.open = True
-#############################################################################
+
 def post(page,Email,password):
 	try:
 		auth.sign_in_with_email_and_password(
@@ -56,7 +56,7 @@ def post(page,Email,password):
 		#page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
 		#page.update()
 		open_wrong_dlg()
-##############################################################################
+
 
 def forgetpass():
 	print("Forget Password")
@@ -126,7 +126,7 @@ class LoginMain(ft.UserControl):
 							content=ft.TextButton(
 								"Create Account",
 								style=ft.ButtonStyle(color="#7D7C7C"),
-								on_click=lambda e: self.page.go('/'), 
+								on_click=lambda e: self.page.go('/signup'), 
 							)
 						),
 					]

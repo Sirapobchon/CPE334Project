@@ -3,7 +3,7 @@ from homepage import Home
 #from todo import main
 from tobuy_new import ToBuyMain
 from calculator_new2 import Calculator
-#import signup
+from signup import SignupMain
 from login import LoginMain
 
 def views(page):
@@ -36,7 +36,7 @@ def views(page):
         '/signup': View(
             route='/signup/',
             controls=[
-                #signup.signup(page)
+                SignupMain(page)
             ]
         ),
         '/login': View(
