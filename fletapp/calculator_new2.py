@@ -79,7 +79,7 @@ class Calculator(ft.UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
-        self.product_container = ft.Column(scroll="auto")
+        self.product_container =  ft.ListView(expand=True, spacing=10, padding=20, height=502)
         self.calculator_logic = CalculatorLogic(self,0)
     
     def handle_slider_change(self, event):
