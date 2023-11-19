@@ -76,11 +76,13 @@ class CalculatorLogic(ft.UserControl):
         self.update()
     
 class Calculator(ft.UserControl):
+    
     def __init__(self, page):
         super().__init__()
         self.page = page
-        self.product_container = ft.Column(scroll="auto")
+        self.product_container =  ft.ListView(expand=True, spacing=10, padding=20, height=502)
         self.calculator_logic = CalculatorLogic(self,0)
+        self.page.on_resize = lambda e : self.update()
     
     def handle_slider_change(self, event):
         self.calculator_logic.value = event.control.value
@@ -144,23 +146,6 @@ class Calculator(ft.UserControl):
                 ),
             ], alignment=ft.MainAxisAlignment.CENTER),
             #cost_per_unit_value,
-
-            ft.Stack([
-                ft.Container(
-                    alignment=ft.alignment.bottom_center,
-                    margin=ft.margin.only(bottom=10),
-                    content= ft.NavigationBar(bgcolor="#fe96a5", selected_index=3,
-                        destinations=[
-                            ft.NavigationDestination(icon=ft.icons.CHECK),
-                            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG),
-                            ft.NavigationDestination(icon=ft.icons.HOME),
-                            ft.NavigationDestination(icon=ft.icons.CALCULATE),
-                            ft.NavigationDestination(icon=ft.icons.PERSON),
-                        ],
-                        on_change=lambda e: ChangeNav(e.page, e.control.selected_index).changetab(),
-                    ),
-                ),
-            ]),
         ]),
         
         theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
@@ -177,9 +162,9 @@ class Calculator(ft.UserControl):
             ],
             tile_mode=ft.GradientTileMode.MIRROR,
         ),
-        width=800,
+        # width=800,
         border_radius=10,
-        height=760,
+        # height=self.page.height-100,
         #expand=True,
     ),
 )
