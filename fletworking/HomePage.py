@@ -121,7 +121,7 @@ body = ft.Container(
 
         ft.Column([
           ft.Row([
-            ft.Image(src = "assets/check-box_icon-icons.com_72816.png", 
+            ft.Image(src = "../assets/check-box_icon-icons.com_72816.png", 
                  width = 70, height = 90),
           ], alignment=ft.MainAxisAlignment.CENTER),
 
@@ -165,7 +165,7 @@ body = ft.Container(
         ft.Column([
           ft.Row([
             ft.Image(
-                 src = "assets/2849824-basket-buy-market-multimedia-shop-shopping-store_107977.png", 
+                 src = "../assets/2849824-basket-buy-market-multimedia-shop-shopping-store_107977.png", 
                  width = 90, height = 90),
                  ], alignment=ft.MainAxisAlignment.CENTER),
         
@@ -205,7 +205,7 @@ body = ft.Container(
         ft.Column([
           ft.Row([
             ft.Image(
-                 src = "assets/seo-social-web-network-internet_92_icon-icons.com_61528.png", 
+                 src = "../assets/seo-social-web-network-internet_92_icon-icons.com_61528.png", 
                  width = 90, height = 90),
                  ], alignment=ft.MainAxisAlignment.CENTER),
 
@@ -246,7 +246,7 @@ body = ft.Container(
          ft.Column([
            ft.Row([
             ft.Image( 
-                src = "assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
+                src = "../assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
                 width = 70, height = 90),
                  ], alignment=ft.MainAxisAlignment.CENTER),
         
