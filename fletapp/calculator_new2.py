@@ -54,9 +54,9 @@ class CalculatorLogic(ft.UserControl):
             return my_dict
     
     def add_price(self):
-        print(f"product_container: {self.product_container.controls}")
+        #print(f"product_container: {self.product_container.controls}")
         self.product_container.controls.clear()
-        print(f"After Clear: {self.product_container.controls}")
+        #print(f"After Clear: {self.product_container.controls}")
         for i,x in enumerate(range(1, int(self.value) + 1), start=1):
             self.product_container.controls.append(
                 ft.Container(
@@ -72,7 +72,7 @@ class CalculatorLogic(ft.UserControl):
                     ])
                 )
             )
-        print(f"In For: {self.product_container.controls}")
+        #print(f"In For: {self.product_container.controls}")
         self.update()
     
 class Calculator(ft.UserControl):
@@ -84,9 +84,9 @@ class Calculator(ft.UserControl):
     
     def handle_slider_change(self, event):
         self.calculator_logic.value = event.control.value
-        print(f"Input Value: {self.calculator_logic.value}")
+        #print(f"Input Value: {self.calculator_logic.value}")
         self.calculator_logic.add_price()
-        print(f"Out For: {self.product_container.controls}")
+        #print(f"Out For: {self.product_container.controls}")
         self.update()
 
     def build(self):

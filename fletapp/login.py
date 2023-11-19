@@ -19,45 +19,57 @@ fireconfig = {
 import pyrebase
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
-#db = firestore.client()
 
 # Variable 
 success_dlg = ft.AlertDialog(
-	title=ft.Text("Sign in sucessfully",
-					
-					size=16,
-					color="#539165",
-					text_align="center",
-					), on_dismiss=lambda e: print("Success Dialog dismissed!")
+	title=ft.Text("Sign in sucessfully",			
+		size=16,
+		color="#539165",
+		text_align="center",
+	), on_dismiss=lambda self: (
+		print("Success Dialog dismissed!"),
+		setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        self.page.update()
+    )
 )
 
 wrong_dlg = ft.AlertDialog(
-	title=ft.Text("Wrong username or password",
-					
-					size=16,
-					color="#C70039",
-					text_align="center",
-					), on_dismiss=lambda e: print("Wrong Dialog dismissed!")
+	title=ft.Text("Wrong username or password",		
+		size=16,
+		color="#C70039",
+		text_align="center",
+	), on_dismiss=lambda self: (
+		print("Wrong Dialog dismissed!"),
+	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        self.page.update()
+    )
 )
 
-def open_success_dlg():
-	#page.dialog = success_dlg
+def open_success_dlg(self):
+	self.page.theme_mode=ft.ThemeMode.LIGHT
+	print(f"Sign in sucessfully")
+	self.page.dialog = success_dlg
 	success_dlg.open = True
-def open_wrong_dlg():
-	#page.dialog = wrong_dlg
+	self.page.update()
+def open_wrong_dlg(self):
+	self.page.theme_mode=ft.ThemeMode.LIGHT
+	print(f"Wrong username or password")
+	self.page.dialog = wrong_dlg
 	wrong_dlg.open = True
+	self.page.update()
 
-def post(page,Email,password):
+def post(self):
+	#print(f"Email: {self.Email.value}")
 	try:
 		auth.sign_in_with_email_and_password(
-			Email.value, password.value)
-		open_success_dlg()
+			self.Email.value, self.password.value)
+		open_success_dlg(self)
+		#self.page.go('/')
 	except:
-		#page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
-		#page.update()
-		open_wrong_dlg()
-
-
+		#self.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
+		open_wrong_dlg(self)
+		self.update()
+		
 class LoginMain(ft.UserControl):
 	def __init__(self, page):
 		super().__init__()
@@ -195,7 +207,7 @@ class LoginMain(ft.UserControl):
 							bgcolor=ft.colors.ORANGE_700,
 							shape={}
 						),
-        				on_click=lambda e: post(self.page, self.Email, self.password),
+        				on_click=lambda e: post(self),
 					)
 				)
 			]
