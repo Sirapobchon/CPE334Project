@@ -1,20 +1,5 @@
 import flet as ft
 
-class ChangeNav(ft.UserControl):
-    def __init__(self, page, selected_index):
-        super().__init__()
-        self.page = page
-        self.index = selected_index
-
-    def changetab(self):
-        destinations = ['/', '/tobuy', '/', '/calculator', '/login']
-        destination_url = destinations[self.index]
-        self.page.go(destination_url)
-
-    def build(self):
-        print(self.index)  # Note: This print statement should be inside the build method
-        return None  # You need to return something from the build method, even if it's None
-
 class CalculatorLogic(ft.UserControl):
     def __init__(self, calculator, value):
         super().__init__()

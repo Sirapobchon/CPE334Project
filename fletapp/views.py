@@ -1,7 +1,7 @@
 from flet import *
 import flet as ft
 from homepage import Home
-#from todo import main
+from todo_new import ToDoMain
 from tobuy_new import ToBuyMain
 from calculator_new2 import Calculator
 from signup import SignupMain
@@ -15,7 +15,7 @@ class ChangeNav(ft.UserControl):
         self.index = selected_index
 
     def changetab(self):
-        destinations = ['/', '/tobuy', '/', '/calculator', '/login']
+        destinations = ['/todo', '/tobuy', '/', '/calculator', '/login']
         destination_url = destinations[self.index]
         self.page.go(destination_url)
 
@@ -41,20 +41,23 @@ def views(page):
             route='/',
             controls=[
                 Home(page)
-            ]
+            ],
+            navigation_bar=navBar(2)
         ),
         
         '/todo': View(
             route='/todo/',
             controls=[
-                #main(page)
-            ]
+                ToDoMain(page)
+            ],
+            navigation_bar=navBar(0)
         ),
         '/tobuy': View(
             route='/tobuy/',
             controls=[
                 ToBuyMain(page)
-            ]
+            ],
+            navigation_bar=navBar(1)
         ),
         '/calculator': View(
             route='/calculator/',

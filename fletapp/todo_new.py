@@ -88,7 +88,9 @@ class Task(ft.UserControl):
 
 
 class TodoApp(ft.UserControl):
-    def build(self):
+    def __init__(self,page):
+        super().__init__()
+        self.page = page
         self.new_task = ft.TextField(
             hint_text="What needs to be done?", on_submit=self.add_clicked, expand=True,border_radius=40,color="BLACK",bgcolor="WHITE",
             border_color="#FA987B",focused_border_color="#CCABD8",
@@ -109,50 +111,6 @@ class TodoApp(ft.UserControl):
         )
 
         self.items_left = ft.Text("0 items left")
-
-        # application's root control (i.e. "view") containing all other controls
-        return ft.Column(
-            alignment=ft.alignment.center,
-            width=380,
-            expand=True,
-            #scroll="END",
-            #height=1000,
-            controls=[
-                ft.Row(
-                    [ft.Text(value="To Do List", size=25,weight=ft.FontWeight.BOLD,)],
-                    
-                    alignment=ft.MainAxisAlignment.CENTER,
-                ),
-                ft.Row(
-                    controls=[
-                        self.new_task,
-                        ft.FloatingActionButton(
-                            icon=ft.icons.ADD,
-                            shape=ft.CircleBorder(),
-                            bgcolor="#F69CB4",
-                            on_click=self.add_clicked,
-                        ),
-                    ],
-                ),
-                ft.Column(
-                    spacing=25,
-                    controls=[
-                        self.filter,
-                        self.tasks,
-                        ft.Row(
-                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
-                            vertical_alignment=ft.CrossAxisAlignment.CENTER,
-                            controls=[
-                                self.items_left,
-                                ft.OutlinedButton(
-                                    text="Clear completed", on_click=self.clear_clicked
-                                ),
-                            ],
-                        ),
-                    ],
-                ),
-            ],
-        )
 
     async def add_clicked(self, e):
         if self.new_task.value:
@@ -191,57 +149,98 @@ class TodoApp(ft.UserControl):
         self.items_left.value = f"{count} active item(s) left"
         await super().update_async()
 
+    def build(self):
+        # application's root control (i.e. "view") containing all other controls
+        return 
 
+class ToDoMain(ft.UserControl):
+    def __init__(self, page):
+        super().__init__()
+        self.page = page
 
-async def main(page):
-    page.title = "To Do App"
-    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.scroll = ft.ScrollMode.HIDDEN
-    page.padding = 0
-    page.bgcolor = "#ddf7f1"
+    async def main(self):
+        await self.page.add_async(self.build())
 
-    page.fonts = {
-        "Kanit": "https://raw.githubusercontent.com/google/fonts/master/ofl/kanit/Kanit-Bold.ttf",
-        "SF Pro": "https://raw.githubusercontent.com/google/fonts/master/ofl/sfprodisplay/SFProDisplay-Bold.ttf",
-    }
-
-    page.theme = ft.Theme(font_family="SF Pro")
-
-
-
-    c2 = ft.SafeArea(ft.Container(
-                    alignment=ft.alignment.center,
-                    gradient=ft.LinearGradient(
-                    begin=ft.alignment.top_center,
-                    end=ft.alignment.bottom_center,
-                    colors=[
-                        "#ddf7f1",
-                        "#f2f8e6",
-                        "#fff5e1",
-                        "#feddda",
-                        "#f1e7f5",
-                    ],
-                    tile_mode=ft.GradientTileMode.MIRROR,
-                    #rotation=math.pi / 4,
-                ),
-                width=800,
-                height=2000,
+    def build(self):
+        return ft.SafeArea(
+            ft.Container(
+                alignment=ft.alignment.center,
+                gradient=ft.LinearGradient(
+                begin=ft.alignment.top_center,
+                end=ft.alignment.bottom_center,
+                colors=[
+                    "#ddf7f1",
+                    "#f2f8e6",
+                    "#fff5e1",
+                    "#feddda",
+                    "#f1e7f5",
+                ],
+                tile_mode=ft.GradientTileMode.MIRROR,
+                #rotation=math.pi / 4,
+            ),
+            width=800,
+            height=2000,
+            expand=True,
+            theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
+		    theme_mode=ft.ThemeMode.LIGHT,
+            content = ft.Column(
+                alignment=ft.alignment.center,
+                width=380,
                 expand=True,
-                content = TodoApp() 
+                #scroll="END",
+                #height=1000,
+                controls=[
+                    ft.Row([
+                        ft.Container(
+                            width=40,
+                            margin=ft.margin.only(top=10,left=10),
+                            content=ft.TextButton(
+                                "<",
+                                style=ft.ButtonStyle(color="#7D7C7C"),
+                                on_click=lambda e: self.page.go('/'),  
+                            )
+                        ),
+                        ft.Text(
+                            value="To Do List", 
+                            size=25,
+                            weight=ft.FontWeight.BOLD,
+                            color="#000000"
+                        ),
+                        ft.Container(
+                            width=40,
+                        ),
+                    ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                    ft.Row(
+                        controls=[
+                            TodoApp(self).new_task,
+                            ft.FloatingActionButton(
+                                icon=ft.icons.ADD,
+                                shape=ft.CircleBorder(),
+                                bgcolor="#F69CB4",
+                                on_click=TodoApp(self).add_clicked,
+                            ),
+                        ],
+                    ),
+                    ft.Column(
+                        spacing=25,
+                        controls=[
+                            TodoApp(self).filter,
+                            TodoApp(self).tasks,
+                            ft.Row(
+                                alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                                vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                                controls=[
+                                    TodoApp(self).items_left,
+                                    ft.OutlinedButton(
+                                        text="Clear completed", on_click=TodoApp(self).clear_clicked
+                                    ),
+                                ],
+                            ),
+                        ],
+                    ),
+                ],
+            ) 
+        )
     )
-            )
-    page.navigation_bar = ft.NavigationBar(bgcolor="#D0E6A5",
-            destinations=[
-            ft.NavigationDestination(icon=ft.icons.CHECK,),
-            ft.NavigationDestination(icon=ft.icons.SHOPPING_BAG, ),
-            ft.NavigationDestination(icon=ft.icons.HOME, ),
-            ft.NavigationDestination(icon=ft.icons.CALCULATE,),
-            ft.NavigationDestination(icon=ft.icons.PERSON, ),
-        ]
-    )
 
 
-
-
-    # create app control and add it to the page
-    await page.add_async(c2)
