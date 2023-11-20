@@ -1,48 +1,51 @@
 import flet as ft
 
 class CalculatorLogic(ft.UserControl):
-    def __init__(self, calculator, value):
+    def __init__(self, calculator, quantity):
         super().__init__()
         self.page = calculator.page
-        self.value = value
+        self.quantity = quantity
+        self.cost_per_unit_value = calculator.cost_per_unit_value
         self.product_container = calculator.product_container
+        self.product_data = {}
 
     def cal_cost_per_unit(self, cost, unit):
         return ("%.3f" % round(cost / unit, 3))
 
-    def calculate(self, cost_per_unit_value):
-        product_data = {}
-        cost_per_unit_value.value = ""
+    def calculate(self):
+        self.cost_per_unit_value.value = ""
         for i, control in enumerate(self.product_container.controls, start=1):
             cost = int(control.content.controls[1].value)
             unit = int(control.content.controls[2].value)
             cost_per_unit = self.cal_cost_per_unit(cost, unit)
-            product_data.setdefault(control.content.controls[0].value, [])
-            product_data[control.content.controls[0].value].append({
+            self.product_data.setdefault(control.content.controls[0].value, [])
+            self.product_data[control.content.controls[0].value].append({
                 "cost": cost,
                 "unit": unit,
                 "costPerUnit": cost_per_unit,
             })
-            cost_per_unit_value.value += (
+            self.cost_per_unit_value.value += (
                 f"Product {i} = {cost_per_unit} Cost/Unit\n"
             )
+        self.update()
+        
 
-    def reset(self, cost_per_unit_value, quantity):
-        self.product_container.controls.clear()
-        cost_per_unit_value.value = ""
-        if not quantity.value:
-            return
-        else:
-            # Assuming you want to store the quantity in some dictionary
-            my_dict = {"quantity": quantity.value}
-            quantity.value = ""  # clear the value of quantity
-            return my_dict
+    def reset(self):
+        self.add_price(),
+        self.cost_per_unit_value.value = ""
+        self.update()
+        # if not quantity.value:
+        #     return
+        # else:
+        #     # Assuming you want to store the quantity in some dictionary
+        #     my_dict = {"quantity": quantity.value}
+        #     quantity.value = ""  # clear the value of quantity
+        #     return my_dict
+
     
     def add_price(self):
-        #print(f"product_container: {self.product_container.controls}")
         self.product_container.controls.clear()
-        #print(f"After Clear: {self.product_container.controls}")
-        for i,x in enumerate(range(1, int(self.value) + 1), start=1):
+        for i,x in enumerate(range(1, int(self.quantity) + 1), start=1):
             self.product_container.controls.append(
                 ft.Container(
                     alignment=ft.alignment.center,
@@ -51,13 +54,12 @@ class CalculatorLogic(ft.UserControl):
                     border_radius=40,
                     width=300,
                     content=ft.Column([
-                        ft.Text(f"Product {i}", size=30, weight="bold", color="#000000"),
+                        ft.Text(f"Product {i}", size=24, weight="bold", color="#000000"),
                         ft.TextField(label="Cost", border_radius=40, width=200, height=50, color="#000000"),
                         ft.TextField(label="Unit", border_radius=40, width=200, height=50, color="#000000"),
                     ])
                 )
             )
-        #print(f"In For: {self.product_container.controls}")
         self.update()
     
 class Calculator(ft.UserControl):
@@ -65,15 +67,14 @@ class Calculator(ft.UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
-        self.product_container =  ft.ListView(expand=True, spacing=10, padding=20, height=502)
+        self.cost_per_unit_value = ft.Text("", size=20)
+        self.product_container =  ft.ListView(expand=True, spacing=10, padding=20, height=490)
         self.calculator_logic = CalculatorLogic(self,0)
         self.page.on_resize = lambda e : self.update()
     
     def handle_slider_change(self, event):
-        self.calculator_logic.value = event.control.value
-        #print(f"Input Value: {self.calculator_logic.value}")
+        self.calculator_logic.quantity = event.control.value
         self.calculator_logic.add_price()
-        #print(f"Out For: {self.product_container.controls}")
         self.update()
 
     def build(self):
@@ -113,24 +114,24 @@ class Calculator(ft.UserControl):
                 )
             ],alignment=ft.MainAxisAlignment.CENTER),
             
-            ft.Row(
-                controls=[self.product_container],
-                alignment=ft.MainAxisAlignment.CENTER),
-                
-
             ft.Row([
                 ft.ElevatedButton("Reset", 
                     bgcolor="white", 
                     color="#424949",
-                    #on_click=lambda e: self.calculator_logic.reset(product_container, cost_per_unit_value, quantity), width=120
+                    width=120,
+                    on_click=lambda e: self.calculator_logic.reset(),
                 ),
                 ft.ElevatedButton("Calculate", 
                     bgcolor="red", 
                     color="white",
-                    #on_click=lambda e: self.calculator_logic.calculate(product_container, cost_per_unit_value), width=120
+                    width=120,
+                    on_click=lambda e: self.calculator_logic.calculate(), 
                 ),
             ], alignment=ft.MainAxisAlignment.CENTER),
-            #cost_per_unit_value,
+            self.cost_per_unit_value,
+            ft.Row(
+                controls=[self.product_container],
+                alignment=ft.MainAxisAlignment.CENTER),
         ]),
         
         theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),

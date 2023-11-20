@@ -1,17 +1,9 @@
 import flet as ft
 import math
 import pyrebase
+import json
 
-fireconfig = {
-    "apiKey": "AIzaSyDqZPzZ_U_DqJkcQFXpUeFGtvFLCo9AFEg",
-    "authDomain": "project334-cdc82.firebaseapp.com",
-    "databaseURL": "https://project334-cdc82-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "projectId": "project334-cdc82",
-    "storageBucket": "project334-cdc82.appspot.com",
-    "messagingSenderId": "829383491724",
-    "appId": "1:829383491724:web:de3ba959db852dfb7bfba9",
-    "measurementId": "G-0DJK0YKSJ5"
-    }
+fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
 
@@ -39,7 +31,7 @@ success_dlg = ft.AlertDialog(
     )
 )
 wrong_dlg = ft.AlertDialog(
-    title=ft.Text("Wrong username or password",
+    title=ft.Text("User already exists",
         size=16,
         color="#C70039",
         text_align="center",
@@ -141,7 +133,7 @@ class SignupMain(ft.UserControl):
                         width=48,
                         height = 40,
                         border_radius = 10,
-                        margin=ft.margin.only(left=15,top=10),
+                        margin=ft.margin.only(top=20),
                         content=ft.IconButton(
                             icon_color ="#000000",
                             icon=ft.icons.ARROW_BACK_IOS_NEW_SHARP,

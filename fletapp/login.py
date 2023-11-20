@@ -1,22 +1,9 @@
 import flet as ft
 import math
-
-#firebase cloud
-#from firebase_admin import credentials
-#cred = credentials.Certificate("./firebase/serviceAccountKey.json")
-
-fireconfig = {
-	"apiKey": "AIzaSyDqZPzZ_U_DqJkcQFXpUeFGtvFLCo9AFEg",
-	"authDomain": "project334-cdc82.firebaseapp.com",
-	"databaseURL": "https://project334-cdc82-default-rtdb.asia-southeast1.firebasedatabase.app",
-	"projectId": "project334-cdc82",
-	"storageBucket": "project334-cdc82.appspot.com",
-	"messagingSenderId": "829383491724",
-	"appId": "1:829383491724:web:de3ba959db852dfb7bfba9",
-	"measurementId": "G-0DJK0YKSJ5"
-	}
-
 import pyrebase
+import json
+
+fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
 
@@ -29,7 +16,8 @@ success_dlg = ft.AlertDialog(
 	), on_dismiss=lambda self: (
 		print("Success Dialog dismissed!"),
 		setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
-        self.page.update()
+        self.page.update(),
+		self.page.go('/account')
     )
 )
 
@@ -64,11 +52,10 @@ def post(self):
 		auth.sign_in_with_email_and_password(
 			self.Email.value, self.password.value)
 		open_success_dlg(self)
-		#self.page.go('/')
 	except:
 		#self.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
 		open_wrong_dlg(self)
-		self.update()
+
 		
 class LoginMain(ft.UserControl):
 	def __init__(self, page):
@@ -121,14 +108,20 @@ class LoginMain(ft.UserControl):
 				ft.Row(
 					controls=[
 						ft.Container(
-							width=40,
-							margin=ft.margin.only(right=10,top=20),
-							content=ft.TextButton(
-								"<",
-								style=ft.ButtonStyle(color="#7D7C7C"),
-								on_click=lambda e: self.page.go('/'),  
-							)
-						),
+                        width=48,
+                        height = 40,
+                        border_radius = 10,
+                        margin=ft.margin.only(top=20),
+                        content=ft.IconButton(
+                            icon_color ="#000000",
+                            icon=ft.icons.ARROW_BACK_IOS_NEW_SHARP,
+                            on_click=lambda e: self.page.go('/account'),  
+                            style=ft.ButtonStyle(
+                                side= {
+                                    ft.MaterialState.DEFAULT : ft.border.BorderSide(1, ft.colors.GREY)
+                                },
+                            )
+                        )),
 						ft.Container(
 							width=150,
 							margin=ft.margin.only(left=120,right=10,top=20),

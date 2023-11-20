@@ -1,6 +1,5 @@
 # A CPE334Project Flet app
 For subject CPE334, KMUTT.
-An example of a minimal Flet app.
 
 First run:
 ```
