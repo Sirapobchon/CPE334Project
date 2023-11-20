@@ -5,7 +5,6 @@ def main(page: ft.Page):
     
     #defining the fonts
     page.fonts = {
-        "Kanit": "https://raw.githubusercontent.com/google/fonts/master/ofl/kanit/Kanit-Bold.ttf",
         "SF Pro": "https://raw.githubusercontent.com/google/fonts/master/ofl/sfprodisplay/SFProDisplay-Bold.ttf",
     }
     

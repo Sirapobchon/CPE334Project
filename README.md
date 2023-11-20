@@ -42,9 +42,39 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 20 Nov  
+### 20 Nov Report Making and the Completed pagelink
 <details open>
-<summary></summary>
+<summary>Report Progress and Completed pagelink</summary>
+
+- Big Achievement with the pagelink completion 
+    - The only missing page is Calendar
+    - Some minor bug with homepage and but every page is linked together
+    - Now is the time to start compiling all the comment and documentation
+- Report Progessing 
+    - Completed
+        - Abstract
+        - Functional Requirements
+        - Architectural Design
+            - Tools
+    - WIP
+        - Computing Languages
+        - Component and User Interface
+- Planning some major and minor bug fix
+    - To do list connection to backend
+    - To buy list connection to backend
+    - Forget Password connection to backend
+
+- Scrum process
+    - sprint
+        - 9 Nov - 22 Nov
+            - @EXer07 Connect To Do and To Buy with Async - 3/3 done
+            - @pppcyd Change NaviBar 2/2 and Backend Variable 0/1 - 2/3
+            - @janekmutt Forget Password Page - 1/1 done, Account Page - 2/3 remaining left for @Sirapobchon backend
+            - @Sirapobchon Firebase Server - 8/14 the only backend current is login and signup
+            - @Sirapobchon Connect Calculator - 3/3 done
+            - @WangSonicS Calendar that can hold reminders - 2/8 calendar done but nothing else
+        - 22 Nov - 6 Dec
+            - Moved Deadline. Yay! Happy day!
 
 </details>
 
