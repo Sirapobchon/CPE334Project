@@ -1,9 +1,14 @@
-# A fletapp Flet app
-
+# A CPE334Project Flet app
+For subject CPE334, KMUTT.
 An example of a minimal Flet app.
 
-To run the app:
-
+First run:
 ```
-flet run [app_directory]
+pip install flet
+pip install pyrebase4
+```
+
+To run the app:
+```
+flet run fletapp\main.py -d
 ```

@@ -42,8 +42,14 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 9 Nov Sprint End Meeting and Start 3rd Sprint
+### 20 Nov  
 <details open>
+<summary></summary>
+
+</details>
+
+### 9 Nov Sprint End Meeting and Start 3rd Sprint
+<details>
 <summary>2nd Sprint End Meeting and Start 3rd Sprint</summary>
 
 - Current 2nd Sprint Work for Each Member
