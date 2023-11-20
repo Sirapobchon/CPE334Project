@@ -119,7 +119,7 @@ class Home(ft.UserControl):
                                     #top=230,
                                     #left=25,
                                     margin=ft.margin.only(left=20),
-                                    on_click=lambda _: self.page.go('/login'),
+                                    on_click=lambda _: self.page.go('/todo'),
                                     alignment=ft.alignment.top_center,
                                     padding=ft.padding.all(10),
                                     gradient=ft.LinearGradient(

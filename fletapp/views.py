@@ -4,6 +4,7 @@ from homepage import Home
 from todo_new import ToDoMain
 from tobuy_new import ToBuyMain
 from calculator_new2 import Calculator
+from account import AccountMain
 from signup import SignupMain
 from login import LoginMain
 from forgetpass import ForgetMain
@@ -15,7 +16,7 @@ class ChangeNav(ft.UserControl):
         self.index = selected_index
 
     def changetab(self):
-        destinations = ['/todo', '/tobuy', '/', '/calculator', '/login']
+        destinations = ['/todo', '/tobuy', '/', '/calculator', '/account']
         destination_url = destinations[self.index]
         self.page.go(destination_url)
 
@@ -65,6 +66,13 @@ def views(page):
                 Calculator(page)
             ],
             navigation_bar=navBar(3)
+        ),
+        '/account': View(
+            route='/account/',
+            controls=[
+                AccountMain(page)
+            ],
+            navigation_bar=navBar(4)
         ),
         '/signup': View(
             route='/signup/',
