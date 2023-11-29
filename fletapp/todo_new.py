@@ -157,9 +157,8 @@ class ToDoMain(ft.UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
+        self.todo_app = TodoApp(self)
 
-    async def main(self):
-        await self.page.add_async(self.build())
 
     def build(self):
         return ft.SafeArea(
@@ -212,27 +211,27 @@ class ToDoMain(ft.UserControl):
                     ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
                     ft.Row(
                         controls=[
-                            TodoApp(self).new_task,
+                            self.todo_app.new_task,
                             ft.FloatingActionButton(
                                 icon=ft.icons.ADD,
                                 shape=ft.CircleBorder(),
                                 bgcolor="#F69CB4",
-                                on_click=TodoApp(self).add_clicked,
+                                on_click=self.todo_app.add_clicked,
                             ),
                         ],
                     ),
                     ft.Column(
                         spacing=25,
                         controls=[
-                            TodoApp(self).filter,
-                            TodoApp(self).tasks,
+                            self.todo_app.filter,
+                            self.todo_app.tasks,
                             ft.Row(
                                 alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
                                 controls=[
-                                    TodoApp(self).items_left,
+                                    self.todo_app.items_left,
                                     ft.OutlinedButton(
-                                        text="Clear completed", on_click=TodoApp(self).clear_clicked
+                                        text="Clear completed", on_click=self.todo_app.clear_clicked
                                     ),
                                 ],
                             ),
