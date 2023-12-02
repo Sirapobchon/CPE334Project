@@ -1,4 +1,3 @@
-from flet import *
 import flet as ft
 from homepage import Home
 from todo_new2 import ToDoMain
@@ -39,7 +38,7 @@ def navBar(selectedIndex):
 
 def views(page):
     return {
-        '/': View(
+        '/': ft.View(
             route='/',
             controls=[
                 Home(page)
@@ -47,47 +46,47 @@ def views(page):
             navigation_bar=navBar(2)
         ),
         
-        '/todo': View(
+        '/todo': ft.View(
             route='/todo/',
             controls=[
                 ToDoMain(page)
             ],
             navigation_bar=navBar(0)
         ),
-        '/tobuy': View(
+        '/tobuy': ft.View(
             route='/tobuy/',
             controls=[
                 ToBuyMain(page)
             ],
             navigation_bar=navBar(1)
         ),
-        '/calculator': View(
+        '/calculator': ft.View(
             route='/calculator/',
             controls=[
                 Calculator(page)
             ],
             navigation_bar=navBar(3)
         ),
-        '/account': View(
+        '/account': ft.View(
             route='/account/',
             controls=[
                 AccountMain(page)
             ],
             navigation_bar=navBar(4)
         ),
-        '/signup': View(
+        '/signup': ft.View(
             route='/signup/',
             controls=[
                 SignupMain(page)
             ]
         ),
-        '/login': View(
+        '/login': ft.View(
             route='/login/',
             controls=[
                 LoginMain(page)
             ]
         ),
-        '/forgetpass': View(
+        '/forgetpass': ft.View(
             route='/forgetpass/',
             controls=[
                 ForgetMain(page)

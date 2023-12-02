@@ -27,7 +27,7 @@ def main(page: ft.Page):
                         on_click=lambda _: page.go(f"/secondpage/{youparams}")
                         )
                     ]
-                    )
+                )
             )
         # GET PARAM FROM HOME PAGE
         param = page.route

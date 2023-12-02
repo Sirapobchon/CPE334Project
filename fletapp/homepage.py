@@ -256,51 +256,51 @@ class Home(ft.UserControl):
                             ]),
 
                             ft.Column([
-                                ft.Container(
-                                    width = 162,
-                                    height = 200, 
-                                    #top = 450,
-                                    #left = 208,
-                                    margin=ft.margin.only(right=20),
-									on_click = lambda _: self.page.go('/'),
-                                    alignment = ft.alignment.center,
-                                    padding = ft.padding.all(10),
-                                    gradient = ft.LinearGradient(
-                                        begin = ft.alignment.top_left,
-                                        end = ft.alignment.bottom_right,
-                                        colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
-                                    ), 
-                                    border_radius= ft.border_radius.all(30),
-                                    content = ft.Column([
-                                        ft.Column([
-                                            ft.Row([
-                                                ft.Image( 
-                                                        src = "../assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
-                                                        width = 70, height = 90),
-                                                        ], alignment=ft.MainAxisAlignment.CENTER),
+                                # ft.Container(
+                                #     width = 162,
+                                #     height = 200, 
+                                #     #top = 450,
+                                #     #left = 208,
+                                #     margin=ft.margin.only(right=20),
+								# 	on_click = lambda _: self.page.go('/'),
+                                #     alignment = ft.alignment.center,
+                                #     padding = ft.padding.all(10),
+                                #     gradient = ft.LinearGradient(
+                                #         begin = ft.alignment.top_left,
+                                #         end = ft.alignment.bottom_right,
+                                #         colors = ['#86E3CE','#D6E6A5','#FFDD94','#FA897B','#CCABD8']
+                                #     ), 
+                                #     border_radius= ft.border_radius.all(30),
+                                #     content = ft.Column([
+                                #         ft.Column([
+                                #             ft.Row([
+                                #                 ft.Image( 
+                                #                         src = "../assets/annual_calender_day_schedule_date_time_calendar_icon_256444.png", 
+                                #                         width = 70, height = 90),
+                                #                         ], alignment=ft.MainAxisAlignment.CENTER),
                                         
-                                        ft.Row([
-                                            ft.Text(value = "Calendar",
-                                                        color = "black",
-                                                        size = 15,
-                                                        weight = 'bold',
-                                                        style = ft.ButtonStyle(
-                                                            color = "white",
-                                                            padding = 10)
-                                                        ),
-                                        ], alignment=ft.MainAxisAlignment.CENTER),
-                                        ], spacing = 1),
+                                #         ft.Row([
+                                #             ft.Text(value = "Calendar",
+                                #                         color = "black",
+                                #                         size = 15,
+                                #                         weight = 'bold',
+                                #                         style = ft.ButtonStyle(
+                                #                             color = "white",
+                                #                             padding = 10)
+                                #                         ),
+                                #         ], alignment=ft.MainAxisAlignment.CENTER),
+                                #         ], spacing = 1),
                                     
 
-                                        ft.Text(value = "Your calendar is your compass; let it lead you to your dreams.",
-                                                        color = "#424949",
-                                                        size = 11,
-                                                        style = ft.ButtonStyle(
-                                                            color = "white",
-                                                            padding = 10)
-                                                        ),
-                                    ], spacing = 7), 
-                                ),
+                                #         ft.Text(value = "Your calendar is your compass; let it lead you to your dreams.",
+                                #                         color = "#424949",
+                                #                         size = 11,
+                                #                         style = ft.ButtonStyle(
+                                #                             color = "white",
+                                #                             padding = 10)
+                                #                         ),
+                                #     ], spacing = 7), 
+                                # ),
 							]),
                         ]),
 						

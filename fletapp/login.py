@@ -3,6 +3,7 @@ import math
 import pyrebase
 import json
 
+fireconfig = {}
 fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
@@ -47,9 +48,8 @@ def open_wrong_dlg(self):
 	self.page.update()
 
 def post(self):
-	#print(f"Email: {self.Email.value}")
 	try:
-		auth.sign_in_with_email_and_password(
+		self.user = auth.sign_in_with_email_and_password(
 			self.Email.value, self.password.value)
 		open_success_dlg(self)
 	except:

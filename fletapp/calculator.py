@@ -76,6 +76,10 @@ class Calculator(ft.UserControl):
         self.calculator_logic.quantity = event.control.value
         self.calculator_logic.add_price()
         self.update()
+    
+    def button_calculate(self, event):
+        self.calculator_logic.calculate()
+        self.update()
 
     def build(self):
         return ft.SafeArea(
@@ -125,10 +129,21 @@ class Calculator(ft.UserControl):
                     bgcolor="red", 
                     color="white",
                     width=120,
-                    on_click=lambda e: self.calculator_logic.calculate(), 
+                    on_click=lambda e: self.button_calculate(e), 
                 ),
             ], alignment=ft.MainAxisAlignment.CENTER),
-            self.cost_per_unit_value,
+            ft.Row(
+                controls=[
+                    ft.Container(
+                        self.cost_per_unit_value,
+                        alignment=ft.alignment.center,
+                        padding=0,
+                        bgcolor="white",
+                        border_radius=40,
+                        width=300,
+                    )
+                ],alignment=ft.MainAxisAlignment.CENTER),
+            
             ft.Row(
                 controls=[self.product_container],
                 alignment=ft.MainAxisAlignment.CENTER),

@@ -101,7 +101,7 @@ class TodoApp(ft.UserControl):
             indicator_color="#B1B8BD",
             scrollable=False,
             selected_index=0,
-            on_change=self.tabs_changed,
+            on_change=self.tabs_changedtabs_changed,
             tabs=[
                 ft.Tab(text="all",), 
                 ft.Tab(text="active"), 

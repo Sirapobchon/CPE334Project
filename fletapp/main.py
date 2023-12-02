@@ -22,6 +22,8 @@ def main(page: ft.Page):
 
     page.theme = ft.Theme(font_family="SF Pro")
 
+    user = "Test"
+
     def route_change(route):
         print(page.route)
         # CLEAR ALL PAGE
