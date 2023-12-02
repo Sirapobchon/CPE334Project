@@ -123,32 +123,24 @@ class TodoApp(ft.UserControl):
 
         self.items_left = ft.Text("0 items left")
 
-    async def add_clicked(self,e):
-        #print(self.new_task.value)
+    def add_clicked(self,e):
         if self.new_task.value:
             task = Task(self.new_task.value, self.task_status_change, self.task_delete)
             self.tasks.controls.append(task)
-            print(self.tasks.controls)
             self.new_task.value = ""
-            await self.new_task.focus_async()
-            await self.update_async()
+            self.new_task.update()
+            self.tasks.update()
+            self.tabs_changed()
 
     def task_status_change(self, task):
-        self.update()
+        self.tabs_changed()
 
     def task_delete(self, task):
         self.tasks.controls.remove(task)
-        self.update()
+        self.tabs_changed()
+        self.tasks.update()
 
-    def tabs_changed(self, e):
-        self.update()
-
-    def clear_clicked(self, e):
-        for task in self.tasks.controls[:]:
-            if task.completed:
-                self.task_delete(task)
-
-    async def update_async(self):
+    def tabs_changed(self, e=None):
         status = self.filter.tabs[self.filter.selected_index].text
         count = 0
         for task in self.tasks.controls:
@@ -157,10 +149,16 @@ class TodoApp(ft.UserControl):
                 or (status == "active" and task.completed == False)
                 or (status == "completed" and task.completed)
             )
+            task.update()
             if not task.completed:
                 count += 1
         self.items_left.value = f"{count} active item(s) left"
-        await super().update_async()
+        self.items_left.update()
+
+    def clear_clicked(self, e):
+        for task in self.tasks.controls[:]:
+            if task.completed:
+                self.task_delete(task)
 
     def build(self):
         # application's root control (i.e. "view") containing all other controls
