@@ -135,12 +135,13 @@ class Calculator(ft.UserControl):
             ft.Row(
                 controls=[
                     ft.Container(
-                        self.cost_per_unit_value,
+                        content=ft.Column([
+                            self.cost_per_unit_value,
+                        ],spacing=10),
                         alignment=ft.alignment.center,
                         padding=0,
                         bgcolor="white",
-                        border_radius=40,
-                        width=300,
+                        border_radius=20,
                     )
                 ],alignment=ft.MainAxisAlignment.CENTER),
             

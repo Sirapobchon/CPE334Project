@@ -1,6 +1,6 @@
 import flet as ft
 from homepage import Home
-from todo_new2 import ToDoMain
+from todo_new import ToDoMain
 from tobuy_new import ToBuyMain
 from calculator import Calculator
 #from calendar import Calendar
