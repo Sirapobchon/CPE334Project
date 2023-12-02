@@ -45,16 +45,23 @@ class ForgetMain(ft.UserControl):
 		)
 
 		self.ForgotPass = ft.Column([
-			ft.Row([
-				ft.Container(
-					width=40,
-					margin=ft.margin.only(top=20,left=-10,right=10),
-					content=ft.TextButton(
-						"<",
-						style=ft.ButtonStyle(color="#7D7C7C"),
-						on_click=lambda e: self.page.go('/login'),  
+			ft.Container(
+				width=48,
+				height = 40,
+				border_radius = 10,
+				margin=ft.margin.only(top=20),
+				content=ft.IconButton(
+					icon_color ="#000000",
+					icon=ft.icons.ARROW_BACK_IOS_NEW_SHARP,
+					on_click=lambda e: self.page.go('/login'),  
+					style=ft.ButtonStyle(
+						side= {
+							ft.MaterialState.DEFAULT : ft.border.BorderSide(1, ft.colors.GREY)
+						},
 					)
-				),
+				)
+			),
+			ft.Row([
 				ft.Container(
 					ft.Text("Forgot Password", 
 						color = "#000000", 
@@ -62,9 +69,6 @@ class ForgetMain(ft.UserControl):
 						weight = "bold",
 					),
 					margin=ft.margin.only(top=20),
-				),
-				ft.Container(
-					width=40,
 				),
 			], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
 			ft.Row([
