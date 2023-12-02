@@ -4,7 +4,7 @@ from todo_new2 import ToDoMain
 from tobuy_new import ToBuyMain
 from calculator import Calculator
 #from calendar import Calendar
-from account import AccountMain
+from Account import AccountMain
 from signup import SignupMain
 from login import LoginMain
 from forgetpass import ForgetMain
