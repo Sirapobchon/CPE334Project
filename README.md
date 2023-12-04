@@ -25,12 +25,16 @@ For subject CPE334, KMUTT
         ```Shell
         python -m venv /path-to-virtual-environment
         ```
+        In this case we use 
+        ```Shell
+        python -m venv ../virenvproject
+        ```
     - Cloning Repository
         - Install git and select the location you want to save the project
         ```Shell
         git clone https://github.com/Sirapobchon/CPE334Project.git
         ```
-    - Extension
+    - Extension used
         - Flet for UI
         ```Shell
         pip install flet
@@ -42,13 +46,23 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 23 Nov Sprint End Meeting and Start 4th sprint
+### 4 Dec Packaging Planning and code refactoring ###
 <details open>
+<summary></summary>
+
+- Packaging Planning
+    - New automate Virtual Environment and Extension needed installation
+    
+</details>
+
+### 23 Nov Sprint End Meeting and Start 4th sprint
+<details>
 <summary>3rd Sprint End Meeting and Start 4th sprint</summary>
 
 - New sprint due to increase of time
 - Report in progress
     - Narrative finish
+    - Ask @EXer07 to help do the report
 
 </details>
 
