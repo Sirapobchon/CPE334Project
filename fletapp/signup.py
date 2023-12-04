@@ -9,7 +9,18 @@ auth = firebase.auth()
 
 # Variable 
 dlg = ft.AlertDialog(
-    content=ft.Text("Please enter the same password",
+    title=ft.Text("Please enter the same password",
+        size=16,
+        color="#C70039",
+        text_align="center",
+    ), on_dismiss=lambda self: (
+        print("Dialog dismissed!"),
+        setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        self.page.update()
+    )
+)
+password_len_dlg= ft.AlertDialog(
+    title=ft.Text("Please enter password at least 6 characters",
         size=16,
         color="#C70039",
         text_align="center",
@@ -31,6 +42,7 @@ success_dlg = ft.AlertDialog(
     )
 )
 wrong_dlg = ft.AlertDialog(
+    
     title=ft.Text("User already exists",
         size=16,
         color="#C70039",
@@ -41,6 +53,32 @@ wrong_dlg = ft.AlertDialog(
         self.page.update()
     )
 )
+empty_email_dlg = ft.AlertDialog(
+    
+    title=ft.Text("Please fill all of your information",
+        size=16,
+        color="#C70039",
+        text_align="center",
+    ), on_dismiss=lambda self: (
+        print("Empty email dismissed!"),
+	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        self.page.update()
+    )
+)
+fill_everything_dlg=ft.AlertDialog(
+    
+    title=ft.Text("Please Input Email",
+        size=16,
+        color="#C70039",
+        text_align="center",
+    ), on_dismiss=lambda self: (
+        print("Empty email dismissed!"),
+	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        self.page.update()
+    )
+) 
+
+
 
 
 def open_dlg(self):
@@ -58,9 +96,31 @@ def open_wrong_dlg(self):
     self.page.dialog = wrong_dlg
     wrong_dlg.open = True
     self.page.update()    
+def open_password_len_dlg(self):
+    self.page.theme_mode=ft.ThemeMode.LIGHT,
+    self.page.dialog = password_len_dlg
+    password_len_dlg.open = True
+    self.page.update()   
+def open_empty_email_dlg(self):
+    self.page.theme_mode=ft.ThemeMode.LIGHT,
+    self.page.dialog = empty_email_dlg
+    empty_email_dlg.open = True
+    self.page.update()   
+def open_fill_everything_dlg(self):
+    self.page.theme_mode=ft.ThemeMode.LIGHT,
+    self.page.dialog = fill_everything_dlg
+    fill_everything_dlg.open = True
+    self.page.update()   
+
 
 def create(self):
-    if self.password_1.value == self.password_2.value: #and password_1 != auth.get_account_info(Email.value):
+    if self.Email.value =="" :       
+        open_empty_email_dlg(self)
+    elif len(self.password_1.value ) <6:
+        #print(len(self.password_1.value))
+        open_password_len_dlg(self)
+
+    elif self.password_1.value == self.password_2.value: #and password_1 != auth.get_account_info(Email.value):
         try:
             auth.create_user_with_email_and_password(
                 self.Email.value, self.password_1.value)
@@ -69,9 +129,17 @@ def create(self):
             #self.page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
             #self.page.update()
             open_wrong_dlg(self)
+    elif self.Email.value =="" : 
+            if self.password_1.value and self.password_2.value  =="":
+                open_fill_everything_dlg(self)
+            else:
+                open_empty_email_dlg(self)
+    #elif self.Email.value and self.password_1.value and self.password_2.value =="" : 
+            #open_
     else:
         open_dlg(self)
         self.update()
+
 
 class SignupMain(ft.UserControl):
     def __init__(self,page):

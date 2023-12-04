@@ -23,7 +23,18 @@ success_dlg = ft.AlertDialog(
 )
 
 wrong_dlg = ft.AlertDialog(
-	title=ft.Text("Wrong username or password",		
+	title=ft.Text("Wrong email or password",		
+		size=16,
+		color="#C70039",
+		text_align="center",
+	), on_dismiss=lambda self: (
+		print("Wrong Dialog dismissed!"),
+	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        self.page.update()
+    )
+)
+empty_Email_and_pass = ft.AlertDialog(
+	title=ft.Text("Please enter email and password",		
 		size=16,
 		color="#C70039",
 		text_align="center",
@@ -42,19 +53,29 @@ def open_success_dlg(self):
 	self.page.update()
 def open_wrong_dlg(self):
 	self.page.theme_mode=ft.ThemeMode.LIGHT
-	print(f"Wrong username or password")
+	print(f"Wrong email or password")
 	self.page.dialog = wrong_dlg
 	wrong_dlg.open = True
 	self.page.update()
+def open_empty_Email_and_pass(self) : 
+	self.page.theme_mode=ft.ThemeMode.LIGHT
+	print(f"Please enter email and password")
+	self.page.dialog = empty_Email_and_pass
+	empty_Email_and_pass.open = True
+	self.page.update()
+
 
 def post(self):
-	try:
-		self.user = auth.sign_in_with_email_and_password(
-			self.Email.value, self.password.value)
-		open_success_dlg(self)
-	except:
+	if self.Email.value == "" : 
+		open_empty_Email_and_pass(self)
+	else: 
+		try:
+			self.user = auth.sign_in_with_email_and_password(
+				self.Email.value, self.password.value)
+			open_success_dlg(self)
+		except:
 		#self.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
-		open_wrong_dlg(self)
+			open_wrong_dlg(self)
 
 		
 class LoginMain(ft.UserControl):
