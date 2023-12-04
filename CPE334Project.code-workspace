@@ -2,10 +2,10 @@
 	"folders": [
 		{
 			"name": "CPE334Project",
-			"path": "."
+			"path": ".."
 		}
 	],
 	"settings": {
-		"python.terminal.activateEnvironment": true
+		"python.terminal.activateEnvironment": true,
 	}
 }

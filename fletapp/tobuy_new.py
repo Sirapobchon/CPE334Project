@@ -70,24 +70,24 @@ class Task(ft.UserControl):
         )
         return ft.Column(controls=[self.display_view, self.edit_view])
 
-    async def edit_clicked(self, e):
+    def edit_clicked(self, e):
         self.edit_name.value = self.display_task.label
         self.display_view.visible = False
         self.edit_view.visible = True
-        await self.update_async()
+        self.update()
 
-    async def save_clicked(self, e):
+    def save_clicked(self, e):
         self.display_task.label = self.edit_name.value
         self.display_view.visible = True
         self.edit_view.visible = False
-        await self.update_async()
+        self.update()
 
-    async def status_changed(self, e):
+    def status_changed(self, e):
         self.completed = self.display_task.value
-        await self.task_status_change(self)
+        self.task_status_change(self)
 
-    async def delete_clicked(self, e):
-        await self.task_delete(self)
+    def delete_clicked(self, e):
+        self.task_delete(self)
 
 class ToBuyApp(ft.UserControl):
     def __init__(self, page):
@@ -121,7 +121,7 @@ class ToBuyApp(ft.UserControl):
 
         self.total_price = 0  # Initialize total price to 0
 
-    async def add_clicked(self, e):
+    def add_clicked(self, e):
         if self.new_task.value:
             price_input = self.new_buy.value.strip()  # Remove leading/trailing spaces
             if price_input:
@@ -131,50 +131,37 @@ class ToBuyApp(ft.UserControl):
                     self.tasks.controls.append(task)
                     self.new_task.value = ""
                     self.new_buy.value = ""  # Clear the price field
-                    await self.new_task.focus_async()
+                    self.new_task.focus_async()
 
                     # Update total price when a new task is added
                     self.total_price += price
                     self.total.value = f"Total price = {self.total_price} ฿"
-                    await self.update_async()
+                    self.new_task.update()
+                    self.tasks.update()
+                    self.tabs_changed()
                 except ValueError:
                     # Handle the case where the input is not a valid number
                     # You can show an error message or take other actions as needed
                     pass
 
-    async def task_status_change(self, task):
-        await self.update_async()
+    def task_status_change(self, task):
+        self.tabs_changed()
 
         # Update total price when the status of a task changes
         # self.updupdate_asyncate_total_price()
 
-    async def task_delete(self, task):
+    def task_delete(self, task):
         self.tasks.controls.remove(task)
 
         # Update total price by subtracting the deleted task's price
         self.total_price -= float(task.task_price)
         self.total.value = f"Total price = {self.total_price} ฿"
 
-        await self.update_async()
+        self.tabs_changed()
+        self.tasks.update()
 
-    async def tabs_changed(self, e):
-        await self.update_async()
 
-    async def clear_clicked(self, e):
-        for task in self.tasks.controls[:]:
-            if task.completed:
-                # Subtract the completed task's price from the total price
-                self.total_price -= float(task.task_price)
-                self.tasks.controls.remove(task)
-
-        self.total.value = f"Total price = {self.total_price} ฿"
-        await self.update_async()
-
-    def update_total_price(self):
-        self.total_price = sum(float(task.task_price) for task in self.tasks.controls if not task.completed)
-        self.total.value = f"Total price = {self.total_price} ฿"
-
-    async def update_async(self):
+    def tabs_changed(self, e):
         status = self.filter.tabs[self.filter.selected_index].text
         count = 0
         for task in self.tasks.controls:
@@ -186,15 +173,29 @@ class ToBuyApp(ft.UserControl):
             if not task.completed:
                 count += 1
         self.items_left.value = f"{count}  item(s) to buy left"
-        await super().update_async()
+        self.items_left.update()
+
+    def clear_clicked(self, e):
+        for task in self.tasks.controls[:]:
+            if task.completed:
+                # Subtract the completed task's price from the total price
+                self.total_price -= float(task.task_price)
+                self.tasks.controls.remove(task)
+
+        self.total.value = f"Total price = {self.total_price} ฿"
+        self.update()
+
+    def update_total_price(self):
+        self.total_price = sum(float(task.task_price) for task in self.tasks.controls if not task.completed)
+        self.total.value = f"Total price = {self.total_price} ฿"
+
+
 
 class ToBuyMain(ft.UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
-
-    async def main(self):
-        await self.page.add_async(self.build())
+        self.tobuy_app = ToBuyApp(self)
 
     def build(self):
         return ft.SafeArea(
@@ -246,29 +247,29 @@ class ToBuyMain(ft.UserControl):
                         ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
                         ft.Row(
                             controls=[
-                                ToBuyApp(self).new_task,
-                                ToBuyApp(self).new_buy,
+                                self.tobuy_app.new_task,
+                                self.tobuy_app.new_buy,
                                 ft.FloatingActionButton(
                                     icon=ft.icons.ADD,
 
                                     shape=ft.CircleBorder(),
                                     bgcolor="#F69CB4",
-                                    on_click=ToBuyApp(self).add_clicked,
+                                    on_click=self.tobuy_app.add_clicked,
                                 ),
                             ],
                         ),
                         ft.Column(
                             spacing=25,
                             controls=[
-                                ToBuyApp(self).filter,
-                                ToBuyApp(self).tasks,
+                                self.tobuy_app.filter,
+                                self.tobuy_app.tasks,
                                 ft.Row(
                                     alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                                     vertical_alignment=ft.CrossAxisAlignment.CENTER,
                                     controls=[
-                                        ToBuyApp(self).items_left,
+                                        self.tobuy_app.items_left,
                                         ft.OutlinedButton(
-                                            text="Clear completed", on_click=ToBuyApp(self).clear_clicked
+                                            text="Clear completed", on_click=self.tobuy_app.clear_clicked
                                         ),
                                     ],
                                 ),
@@ -276,7 +277,7 @@ class ToBuyMain(ft.UserControl):
                         ),
                         ft.Row(
                             alignment=ft.MainAxisAlignment.CENTER,
-                            controls=[ToBuyApp(self).total],
+                            controls=[self.tobuy_app.total],
                         ),
                     ],
                 )
