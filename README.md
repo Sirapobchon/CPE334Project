@@ -48,10 +48,11 @@ For subject CPE334, KMUTT
 
 ### 4 Dec Packaging Planning and code refactoring ###
 <details open>
-<summary></summary>
+<summary>Packaging and Installation</summary>
 
 - Packaging Planning
-    - New automate Virtual Environment and Extension needed installation
+    - New automate Virtual Environment and Extension needed installation planned
+- Pop-Up Bug fix
     
 </details>
 
