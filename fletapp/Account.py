@@ -1,7 +1,17 @@
 import flet as ft
 
-class AccountMain(ft.UserControl):
+def type(self):
+    if self.user == None:
+        print("GUEST")
+    else:
+        print("{self.user['email']}")
 
+class AccountMain(ft.UserControl):
+    def __init__(self,page):
+        super().__init__()
+        self.page = page
+        self.user = page.client_storage.get("email")
+    
     def build(self):
         return ft.SafeArea(
             ft.Container(
@@ -30,6 +40,8 @@ class AccountMain(ft.UserControl):
                         # ft.Text("Account", color = "#000000" ,size=28, weight=ft.FontWeight.BOLD, alignment = ft.alignment.center),
                         ft.Text("Guess mode", color = "#000000" , size=20, weight=ft.FontWeight.BOLD),
                         ft.Text("Please log in to the system\n\n", color = "#737373", size=14),
+                        #type(self),
+                        #print(self.user),
                         ft.Row([
                             ft.ElevatedButton("login",
                                 bgcolor = "red", 

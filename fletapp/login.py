@@ -16,7 +16,7 @@ success_dlg = ft.AlertDialog(
 		text_align="center",
 	), on_dismiss=lambda self: (
 		print("Success Dialog dismissed!"),
-		setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+		#setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update(),
 		self.page.go('/account')
     )
@@ -29,7 +29,7 @@ wrong_dlg = ft.AlertDialog(
 		text_align="center",
 	), on_dismiss=lambda self: (
 		print("Wrong Dialog dismissed!"),
-	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+	    #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -40,7 +40,7 @@ empty_Email_and_pass = ft.AlertDialog(
 		text_align="center",
 	), on_dismiss=lambda self: (
 		print("Wrong Dialog dismissed!"),
-	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+	    #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -72,6 +72,10 @@ def post(self):
 		try:
 			self.user = auth.sign_in_with_email_and_password(
 				self.Email.value, self.password.value)
+			#print(self.user)
+			self.page.client_storage.set("email", self.user["email"])
+			value = self.page.client_storage.get("email")
+			print(value)
 			open_success_dlg(self)
 		except:
 		#self.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))

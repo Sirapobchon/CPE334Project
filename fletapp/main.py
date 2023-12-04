@@ -23,7 +23,7 @@ def main(page: ft.Page):
     page.theme = ft.Theme(font_family="SF Pro")
     page.theme_mode = ft.ThemeMode.LIGHT
 
-    user = "Test"
+    
 
     def route_change(route):
         print(page.route)
