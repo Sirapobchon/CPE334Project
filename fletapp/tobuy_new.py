@@ -131,11 +131,11 @@ class ToBuyApp(ft.UserControl):
                     self.tasks.controls.append(task)
                     self.new_task.value = ""
                     self.new_buy.value = ""  # Clear the price field
-                    self.new_task.focus_async()
 
                     # Update total price when a new task is added
                     self.total_price += price
                     self.total.value = f"Total price = {self.total_price} ฿"
+                    self.total.update()
                     self.new_task.update()
                     self.tasks.update()
                     self.tabs_changed()
@@ -148,7 +148,7 @@ class ToBuyApp(ft.UserControl):
         self.tabs_changed()
 
         # Update total price when the status of a task changes
-        # self.updupdate_asyncate_total_price()
+        self.update_total_price()
 
     def task_delete(self, task):
         self.tasks.controls.remove(task)
@@ -160,14 +160,12 @@ class ToBuyApp(ft.UserControl):
         self.tabs_changed()
         self.tasks.update()
 
-
-    def tabs_changed(self, e):
+    def tabs_changed(self, e=None):
         status = self.filter.tabs[self.filter.selected_index].text
         count = 0
         for task in self.tasks.controls:
             task.visible = (
                 status == "all"
-                or (status == "active" and task.completed == False)
                 or (status == "completed" and task.completed)
             )
             if not task.completed:
@@ -188,8 +186,6 @@ class ToBuyApp(ft.UserControl):
     def update_total_price(self):
         self.total_price = sum(float(task.task_price) for task in self.tasks.controls if not task.completed)
         self.total.value = f"Total price = {self.total_price} ฿"
-
-
 
 class ToBuyMain(ft.UserControl):
     def __init__(self, page):
@@ -218,41 +214,41 @@ class ToBuyMain(ft.UserControl):
                 height=2000,
                 expand=True,
                 theme=ft.Theme(color_scheme_seed=ft.colors.BLACK),
-		        theme_mode=ft.ThemeMode.LIGHT,
+                theme_mode=ft.ThemeMode.LIGHT,
                 content=ft.Column(
                     alignment=ft.alignment.center,
                     width=380,
                     expand=True,
-                    #scroll="END",
-                    #height=1000,
                     controls=[
-                            ft.Row([
+                        ft.Row(
+                            controls=[
                                 ft.Container(
-                                width=40,
-                                margin=ft.margin.only(top=10,left=10),
-                                content=ft.TextButton(
-                                    "<",
-                                    style=ft.ButtonStyle(color="#7D7C7C"),
-                                    on_click=lambda e: self.page.go('/'),  
-                                )
-                            ),
-                            ft.Text(
-                                value="To Buy List",
-                                size=25,
-                                weight=ft.FontWeight.BOLD,
-                                color="#000000"
-                            ),
-                            ft.Container(
-                                width=40,
-                            ),
-                        ],alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                                    width=40,
+                                    margin=ft.margin.only(top=10, left=10),
+                                    content=ft.TextButton(
+                                        "<",
+                                        style=ft.ButtonStyle(color="#7D7C7C"),
+                                        on_click=lambda e: self.page.go('/'),
+                                    )
+                                ),
+                                ft.Text(
+                                    value="To Buy List",
+                                    size=25,
+                                    weight=ft.FontWeight.BOLD,
+                                    color="#000000"
+                                ),
+                                ft.Container(
+                                    width=40,
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN
+                        ),
                         ft.Row(
                             controls=[
                                 self.tobuy_app.new_task,
                                 self.tobuy_app.new_buy,
                                 ft.FloatingActionButton(
                                     icon=ft.icons.ADD,
-
                                     shape=ft.CircleBorder(),
                                     bgcolor="#F69CB4",
                                     on_click=self.tobuy_app.add_clicked,
@@ -284,5 +280,3 @@ class ToBuyMain(ft.UserControl):
                 )
             )
         )
-
-        

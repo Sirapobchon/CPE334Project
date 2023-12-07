@@ -7,9 +7,9 @@ fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
 
-def send_reset_link(email):
-	# email = email_field.value
-	# Code to send reset link to email
+def send_reset_link(self):
+	print(self.email_field.value)
+	auth.send_password_reset_email(self.email_field.value)
 	ft.page.snackbar = ft.SnackBar(
 			"Reset link sent! Please check your inbox."
 	)
@@ -32,7 +32,7 @@ class ForgetMain(ft.UserControl):
 			bgcolor = "red", 
 			color="white", 
 			width=300, 
-			on_click=lambda e: send_reset_link(self.email_field.value)
+			on_click=lambda e: send_reset_link(self)
 		)
 
 		self.ForgotPass = ft.Column([

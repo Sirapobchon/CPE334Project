@@ -72,7 +72,7 @@ def post(self):
 		try:
 			self.user = auth.sign_in_with_email_and_password(
 				self.Email.value, self.password.value)
-			#print(self.user)
+			print(self.user)
 			self.page.client_storage.set("email", self.user["email"])
 			value = self.page.client_storage.get("email")
 			print(value)

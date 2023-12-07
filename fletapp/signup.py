@@ -15,7 +15,7 @@ dlg = ft.AlertDialog(
         text_align="center",
     ), on_dismiss=lambda self: (
         print("Dialog dismissed!"),
-        setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -26,7 +26,7 @@ password_len_dlg= ft.AlertDialog(
         text_align="center",
     ), on_dismiss=lambda self: (
         print("Dialog dismissed!"),
-        setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -37,7 +37,7 @@ success_dlg = ft.AlertDialog(
         text_align="center",
     ), on_dismiss=lambda self: (
         print("Success Dialog dismissed!"),
-        setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+        #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -49,7 +49,7 @@ wrong_dlg = ft.AlertDialog(
         text_align="center",
     ), on_dismiss=lambda self: (
         print("Wrong Dialog dismissed!"),
-	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+	    #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -61,7 +61,7 @@ empty_email_dlg = ft.AlertDialog(
         text_align="center",
     ), on_dismiss=lambda self: (
         print("Empty email dismissed!"),
-	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+	    #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 )
@@ -73,7 +73,7 @@ fill_everything_dlg=ft.AlertDialog(
         text_align="center",
     ), on_dismiss=lambda self: (
         print("Empty email dismissed!"),
-	    setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
+	    #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
         self.page.update()
     )
 ) 
@@ -114,37 +114,49 @@ def open_fill_everything_dlg(self):
 
 
 def create(self):
-    if self.Email.value =="" :       
+    if self.Email.value == "":
         open_empty_email_dlg(self)
-    elif len(self.password_1.value ) <6:
-        #print(len(self.password_1.value))
+    elif len(self.password_1.value) < 6:
         open_password_len_dlg(self)
-
-    elif self.password_1.value == self.password_2.value: #and password_1 != auth.get_account_info(Email.value):
+    elif self.password_1.value == self.password_2.value:
         try:
+            # Create user with email and password
             auth.create_user_with_email_and_password(
                 self.Email.value, self.password_1.value)
+
+            # Sign in the user to get the user's UID
+            self.user = auth.sign_in_with_email_and_password(self.Email.value, self.password_1.value)
+            self.user_uid = self.user['localId']
+            print(self.user_uid)
+
             open_success_dlg(self)
         except:
-            #self.page.add(ft.SafeArea(ft.Container(ft.Text("Wrong username or password"))))
-            #self.page.update()
             open_wrong_dlg(self)
-    elif self.Email.value =="" : 
-            if self.password_1.value and self.password_2.value  =="":
-                open_fill_everything_dlg(self)
-            else:
-                open_empty_email_dlg(self)
-    #elif self.Email.value and self.password_1.value and self.password_2.value =="" : 
-            #open_
+    elif self.Email.value == "":
+        if self.password_1.value and self.password_2.value == "":
+            open_fill_everything_dlg(self)
+        else:
+            open_empty_email_dlg(self)
     else:
         open_dlg(self)
         self.update()
+
 
 
 class SignupMain(ft.UserControl):
     def __init__(self,page):
         super().__init__()
         self.page = page
+        self.username = ft.TextField(
+            label="Username",
+            border_radius=40,
+            border_color=ft.colors.BLACK,
+            focused_border_color=ft.colors.ORANGE_700,
+            text_style=ft.TextStyle(
+            color="#000000",
+            )
+        )
+        
         self.Email = ft.TextField(
             label="Email",
             border_radius=40,
@@ -240,17 +252,7 @@ class SignupMain(ft.UserControl):
                         width=300,
                         margin=ft.margin.only(left=10,right=10,top=20),
                         content=ft.Column(
-                            controls=[
-                                ft.TextField(
-                                    label="Username",
-                                    border_radius=40,
-                                    border_color=ft.colors.BLACK,
-                                    focused_border_color=ft.colors.ORANGE_700,
-                                    text_style=ft.TextStyle(
-                                    color="#000000",
-                                    )
-                                )
-                            ]
+                            controls=[self.username]
                         )
                     ),
                     ft.Container(  #for email
