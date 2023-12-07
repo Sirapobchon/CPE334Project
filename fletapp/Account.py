@@ -1,66 +1,86 @@
 import flet as ft
 
-def type(self):
-    if self.user == None:
-        print("GUEST")
+def get_user_status(user): 
+    if user is None:
+        return "Guest"
     else:
-        print("{self.user['email']}")
+        return user  # You may want to replace this with the actual check for logged-in users
+    
+def page_builder(self, user):
+    user_status = user
+
+    if user_status == "Guest":
+        return guest_content(self)
+    else:
+        return user_content(self)
+
+def guest_content(self):
+    return ft.Column([
+        ft.Text("Please log in to the system\n\n", color="#737373", size=14),
+        ft.Row([
+            ft.ElevatedButton("Login",
+                bgcolor="red",
+                color="white",
+                width=120,
+                on_click=lambda e: self.page.go('/login'),
+            ),
+        ], alignment=ft.MainAxisAlignment.CENTER),
+    ])
+
+def user_content(self):
+    return ft.Column([
+        ft.Text("Edit Account Information", color="#737373", size=14),
+        ft.Row([
+            ft.ElevatedButton("Logout",
+                bgcolor="blue",
+                color="white",
+                width=120,
+                on_click=lambda e: logout(self),
+            ),
+        ], alignment=ft.MainAxisAlignment.CENTER),
+    ])
+
+def logout(self):
+    self.page.client_storage.clear()
+    self.user = None
+    self.page.update()
 
 class AccountMain(ft.UserControl):
-    def __init__(self,page):
+    def __init__(self, page):
         super().__init__()
         self.page = page
         self.user = page.client_storage.get("email")
-    
+
     def build(self):
+        user_status = get_user_status(self.user)
         return ft.SafeArea(
             ft.Container(
                 gradient=ft.LinearGradient(
-                begin=ft.alignment.top_center,
-                end=ft.alignment.bottom_center,
-                colors=[
-                    "#ddf7f1",
-                    "#f2f8e6",
-                    "#fff5e1",
-                    "#feddda",
-                    "#f1e7f5",
-                ],
-                tile_mode=ft.GradientTileMode.MIRROR,
-                #rotation=math.pi / 4,
-            ),
-            width=800,
-            height=2000,
-            expand=True, 
-            content = ft.Container(  
-                ft.Column(
-                    [
-                        ft.Row([
-                            ft.Text("Account", color = "#000000" ,size=28, weight=ft.FontWeight.BOLD,),
-                            ], alignment=ft.MainAxisAlignment.CENTER),
-                        # ft.Text("Account", color = "#000000" ,size=28, weight=ft.FontWeight.BOLD, alignment = ft.alignment.center),
-                        ft.Text("Guess mode", color = "#000000" , size=20, weight=ft.FontWeight.BOLD),
-                        ft.Text("Please log in to the system\n\n", color = "#737373", size=14),
-                        #type(self),
-                        #print(self.user),
-                        ft.Row([
-                            ft.ElevatedButton("login",
-                                bgcolor = "red", 
-                                color="white",
-                                width=120,
-                                on_click=lambda e: self.page.go('/login'),),
-                            ], alignment=ft.MainAxisAlignment.CENTER,),
-                        # ft.Text("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"),           
-
-                        # ft.ElevatedButton("login",bgcolor = "red", color="white",
-                        #            on_click = login_button, width=120),
-                        # name_field, 
-                        # email_field,
-                        # password_field,
-                        # ft.Row([update_button, logout_button], alignment="spaceBetween")
+                    begin=ft.alignment.top_center,
+                    end=ft.alignment.bottom_center,
+                    colors=[
+                        "#ddf7f1",
+                        "#f2f8e6",
+                        "#fff5e1",
+                        "#feddda",
+                        "#f1e7f5",
                     ],
-                    
-                    width = 350,
+                    tile_mode=ft.GradientTileMode.MIRROR,
+                ),
+                width=800,
+                height=2000,
+                expand=True,
+                content=ft.Container(
+                    ft.Column(
+                        [
+                            ft.Row([
+                                ft.Text("Account", color="#000000", size=28, weight=ft.FontWeight.BOLD,),
+                            ], alignment=ft.MainAxisAlignment.CENTER),
+                            ft.Text(f"{user_status} mode", color="#000000", size=20, weight=ft.FontWeight.BOLD),
+                            page_builder(self,user_status),  # Pass the user to the method
+                        ],
+                        width=350,
+                    )
                 )
             )
         )
-    )

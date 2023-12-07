@@ -196,6 +196,7 @@ class ToBuyMain(ft.UserControl):
         super().__init__()
         self.page = page
         self.tobuy_app = ToBuyApp(self)
+        self.user = page.client_storage.get("email")
 
     def build(self):
         return ft.SafeArea(
