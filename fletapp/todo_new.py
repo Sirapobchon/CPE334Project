@@ -170,6 +170,7 @@ class ToDoMain(ft.UserControl):
         super().__init__()
         self.page = page
         self.todo_app = TodoApp(self)
+        self.user = page.client_storage.get("email")
 
     def build(self):
         return ft.SafeArea(
