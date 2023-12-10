@@ -72,9 +72,10 @@ def post(self):
 		try:
 			self.user = auth.sign_in_with_email_and_password(
 				self.Email.value, self.password.value)
-			print(self.user)
-			self.page.client_storage.set("email", self.user["email"])
-			value = self.page.client_storage.get("email")
+			#print(self.user)
+			self.page.client_storage.set("user_id", self.user["localId"])
+			self.page.client_storage.set("user_email", self.user["email"])
+			value = self.page.client_storage.get("user_id")
 			print(value)
 			open_success_dlg(self)
 		except:

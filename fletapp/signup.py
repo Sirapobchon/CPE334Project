@@ -6,6 +6,7 @@ import json
 fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()
+db = firebase.database()
 
 # Variable 
 dlg = ft.AlertDialog(
@@ -38,7 +39,8 @@ success_dlg = ft.AlertDialog(
     ), on_dismiss=lambda self: (
         print("Success Dialog dismissed!"),
         #setattr(self.page, "theme_mode", ft.ThemeMode.SYSTEM),
-        self.page.update()
+        self.page.update(),
+        self.page.go('/login')
     )
 )
 wrong_dlg = ft.AlertDialog(
@@ -77,9 +79,6 @@ fill_everything_dlg=ft.AlertDialog(
         self.page.update()
     )
 ) 
-
-
-
 
 def open_dlg(self):
     self.page.theme_mode=ft.ThemeMode.LIGHT,
@@ -128,7 +127,11 @@ def create(self):
             self.user = auth.sign_in_with_email_and_password(self.Email.value, self.password_1.value)
             self.user_uid = self.user['localId']
             print(self.user_uid)
-
+            user_data = {
+                'email': self.Email.value,
+                'username': self.username.value,
+            }
+            db.child('users').child(self.user_uid).set(user_data)
             open_success_dlg(self)
         except:
             open_wrong_dlg(self)
@@ -217,7 +220,7 @@ class SignupMain(ft.UserControl):
                         content=ft.IconButton(
                             icon_color ="#000000",
                             icon=ft.icons.ARROW_BACK_IOS_NEW_SHARP,
-                            on_click=lambda e: self.page.go('/login'),  
+                            on_click=lambda e: self.page.go('/account'),  
                             style=ft.ButtonStyle(
                                 side= {
                                     ft.MaterialState.DEFAULT : ft.border.BorderSide(1, ft.colors.GREY)
