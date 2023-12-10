@@ -2,18 +2,20 @@ import flet as ft
 import pyrebase
 import json
 
-fireconfig = {}
+# Load Firebase configuration from a file
 fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 db = firebase.database()
 
 def page_builder(self):
+    # Check if the user is logged in
     if self.user is None:
         return guest_content(self)
     else:
         return user_content(self)
 
 def guest_content(self):
+    # Guest mode content
     return ft.Column([
         ft.Text(
             f"Guest mode", 
@@ -41,14 +43,18 @@ def guest_content(self):
         ], alignment=ft.MainAxisAlignment.CENTER),
     ])
 
-
 def user_content(self):
     try:
+        # Attempt to retrieve user data from the database
         user_data = db.child('users').child(self.user).get().val()
+
+        # Check if username is available, use email if not
         if user_data and 'username' in user_data and user_data['username'] != "":
             username = user_data['username']
         else:
             username = self.user_email
+
+        # User content
         return ft.Column([
             ft.Text(
                 f"Welcome, {username}", 
@@ -67,11 +73,11 @@ def user_content(self):
             ], alignment=ft.MainAxisAlignment.CENTER),
         ])
     except Exception as e:
-        self.page.client_storage.clear()
-        self.user = None
+        # Log the error for debugging purposes
+        print(f"Error in user_content: {e}")
+        # Provide a generic error message to the user
         return ft.Column([
-            ft.Text(f"Error retrieving user data: {e}", color="#FF0000", size=16),
-            ft.Text("Please log in again", color="#FF0000", size=16),
+            ft.Text("An error occurred while retrieving user data. Please try again later.", color="#FF0000", size=16),
             ft.Row([
                 ft.ElevatedButton("Login",
                     bgcolor="red",
@@ -83,9 +89,10 @@ def user_content(self):
         ])
 
 def logout(self):
+    # Clear user-related information from client storage
     self.page.client_storage.clear()
     self.user = None
-    page_builder.update()
+    # Update the page
     self.page.update()
 
 class AccountMain(ft.UserControl):
@@ -96,7 +103,8 @@ class AccountMain(ft.UserControl):
         self.user_email = page.client_storage.get("user_email")
 
     def build(self):
-        maincontain = ft.Container(
+        # Main container for the account page
+        main_container = ft.Container(
             ft.Column(
                 [
                     ft.Row([
@@ -104,12 +112,13 @@ class AccountMain(ft.UserControl):
                     ], alignment=ft.MainAxisAlignment.CENTER),
                     ft.Container(
                         page_builder(self),  # Pass the user to the method
-                        margin=ft.margin.only(left=20,right=20),
+                        margin=ft.margin.only(left=20, right=20),
                     ),
                 ],
                 width=320,
             )
         )
+        # Safe area container with gradient background
         return ft.SafeArea(
             ft.Container(
                 gradient=ft.LinearGradient(
@@ -127,6 +136,6 @@ class AccountMain(ft.UserControl):
                 width=800,
                 height=2000,
                 expand=True,
-                content=maincontain,
+                content=main_container,
             )
         )

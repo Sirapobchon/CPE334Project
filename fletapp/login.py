@@ -3,7 +3,6 @@ import math
 import pyrebase
 import json
 
-fireconfig = {}
 fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
 firebase = pyrebase.initialize_app(fireconfig)
 auth = firebase.auth()

@@ -1,5 +1,11 @@
 import flet as ft
 import math
+import pyrebase
+import json
+
+fireconfig = json.load(open('fletapp/firebase/firebaseConfig.json', 'r'))
+firebase = pyrebase.initialize_app(fireconfig)
+db = firebase.database()
 
 class Task(ft.UserControl):
     def __init__(self, task_name, task_status_change, task_delete):
