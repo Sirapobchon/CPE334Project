@@ -94,6 +94,7 @@ def logout(self):
     self.user = None
     # Update the page
     self.page.update()
+    self.page.go('/')
 
 class AccountMain(ft.UserControl):
     def __init__(self, page):
