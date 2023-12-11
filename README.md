@@ -7,25 +7,26 @@ For subject CPE334, KMUTT
 ### Daily Life Management as a Student
 - Pin notes and due dates, can add stages with tags
 - Group notifications
-- To buy list + To Do List 
-- Map Links for meet ups
+- To-buy list + To-Do List
+- Price Calculator
+- Map Links for meet-ups
 - Schedule
 
-### Random Idea (Probably won't be added)
-- NFC tap to friend for sending in app stuff
-- Group chat messaging system
-- Map location with GPS tracking
+### Completed
+- To-buy list + To-Do List 
+- Sign in and Login
+- Price Calculator
 
 # Installation
-- Planned Apk file implementation
+- Planned APK file implementation
 - Source code config
     - Virtual Environment
-        - It is best to setup a virtual but if you don't want to then, You do you.
-        - Please setup venv outside of the repository ```cd ..```
+        - It is best to setup a virtual but if you don't want to then, then You do you.
+        - Please setup venv outside of the repository ``` cd .. ```
         ```Shell
         python -m venv /path-to-virtual-environment
         ```
-        In this case we use 
+        In this case, we use 
         ```Shell
         python -m venv ../virenvproject
         ```
@@ -46,13 +47,23 @@ For subject CPE334, KMUTT
 
 # Progress update
 
-### 4 Dec Packaging Planning and code refactoring ###
+### 11 Dec Final Commit and Alpha Release ###
 <details open>
+<summary>Final Commit and Alpha Release/summary>
+
+@sirapobchon - As the project deadline approaches, the sprint 4 has come to an end. We, along with the scrum master, have determined that the project is not fully prepared for a complete release. Consequently, the project will be shared without being packaged into a .apk file. Instead, it will be provided solely as source code for our use in sprint 5 and beyond, should we choose to proceed.
+    
+</details>
+
+### 4 Dec Packaging Planning and code refactoring ###
+<details>
 <summary>Packaging and Installation</summary>
 
 - Packaging Planning
-    - New automate Virtual Environment and Extension needed installation planned
+    - New automated Virtual Environment and Extension needed installation planned
 - Pop-Up Bug fix
+- Account page with backend
+- UserID client storage
     
 </details>
 
@@ -60,22 +71,22 @@ For subject CPE334, KMUTT
 <details>
 <summary>3rd Sprint End Meeting and Start 4th sprint</summary>
 
-- New sprint due to increase of time
+- New 4th sprint due to an increase in time
 - Report in progress
     - Narrative finish
     - Ask @EXer07 to help do the report
 
 </details>
 
-### 20 Nov Report Making and the Completed pagelink
+### 20 Nov Report Making and the Completed Pagelink
 <details>
 <summary>Report Progress and Completed pagelink</summary>
 
-- Big Achievement with the pagelink completion 
-    - The only missing page is Calendar
-    - Some minor bug with homepage and but every page is linked together
-    - Now is the time to start compiling all the comment and documentation
-- Report Progessing 
+- Big Achievement with the page link completion 
+    - The only missing page is the Calendar
+    - Some minor bug with the homepage but every page is linked together
+    - Now is the time to start compiling all the comments and documentation
+- Report Progressing 
     - Completed
         - Abstract
         - Functional Requirements
@@ -84,10 +95,10 @@ For subject CPE334, KMUTT
     - WIP
         - Computing Languages
         - Component and User Interface
-- Planning some major and minor bug fix
-    - To do list connection to backend
-    - To buy list connection to backend
-    - Forget Password connection to backend
+- Planning some major and minor bug fixes
+    - To-do list connection to the backend
+    - To buy list connection to the backend
+    - Forget Password connection to the backend
 
 - Scrum process
     - sprint
@@ -95,7 +106,7 @@ For subject CPE334, KMUTT
             - @EXer07 Connect To Do and To Buy with Async - 3/3 done
             - @pppcyd Change NaviBar 2/2 and Backend Variable 0/1 - 2/3
             - @janekmutt Forget Password Page - 1/1 done, Account Page - 2/3 remaining left for @Sirapobchon backend
-            - @Sirapobchon Firebase Server - 8/14 the only backend current is login and signup
+            - @Sirapobchon Firebase Server - 8/14 The only backend current is login and signup
             - @Sirapobchon Connect Calculator - 3/3 done
             - @WangSonicS Calendar that can hold reminders - 2/8 calendar done but nothing else
         - 22 Nov - 6 Dec
@@ -116,7 +127,7 @@ For subject CPE334, KMUTT
     - @WangSonicS Calendar Page - 8
 
 - Backend table by @Sirapobchon and @pppcyd
-    - Authticate (User sign-in) - 2/2 Done
+    - Authenticate (User sign-in) - 2/2 Done
     - ToDo Data - 0/1
     - ToBuy Data - 0/1
     - Calendar - 0/2
@@ -142,7 +153,7 @@ For subject CPE334, KMUTT
 
 - Main connecting page
     - @EXer07 and @Sirapobchon
-    - Use main.py to connect to homepage, login, signup, todo, tobuy, and calendar
+    - Use main.py to connect to the homepage, login, signup, todo, tobuy, and calendar
 
 - @everyone Whoever is free, start making a report
     - Report Requirement
@@ -156,13 +167,13 @@ For subject CPE334, KMUTT
             - Diagram Drawing Tools
                 - Visual-Paradigm
             - Source Control Management
-                - Gitub
+                - GitHub
             - UI Design Tools
                 - Canvas
             - IDE
                 - VS Code with extension
             - Compile
-                - Andriod Studio
+                - Android Studio
         2. Computing Languages
             - Python
                 - Flet UI
@@ -170,7 +181,7 @@ For subject CPE334, KMUTT
                 - Firebase Backend
         3. Component and User Interface
     - Other Design Elements
-        1. Activites Diagram
+        1. Activities Diagram
         2. Sequence Diagram
         3. Package Diagram
         4. Database Diagram
@@ -179,7 +190,7 @@ For subject CPE334, KMUTT
     - Appendix
 
 - Backend table by @Sirapobchon and @pppcyd
-    - Authticate (User sign-in) - 2/2 Done
+    - Authenticate (User sign-in) - 2/2 Done
     - ToDo Data - 0/1
     - ToBuy Data - 0/1
     - Calendar - 0/2
@@ -198,10 +209,10 @@ For subject CPE334, KMUTT
 <details>
 <summary>Deciding the Back-end future</summary>
 
-### Change to Google Firebase instead of django
+### Change to Google Firebase instead of Django
 - Reason:
     - easier
-    - cloud hosting (No need for open own server)
+    - cloud hosting (No need to open own server)
 
 - Scrum process
     - @EXer07 Notification - 3
@@ -220,9 +231,9 @@ For subject CPE334, KMUTT
             - Scoring and Scrum Planning
             - @pppcyd To Buy-list - 3
             - @janekmutt Value Calculator - 2
-            - @janekmutt Home page continue - 1
+            - @janekmutt Home page continues - 1
             - @WangSonicS Calendar that can hold reminders - 8
-            - @EXer07 and @Sirapobchon backend stuff for all page - alot
+            - @EXer07 and @Sirapobchon backend stuff for all pages - alot
             - @everyone Whoever is free, start making a report
         - 9 Nov - 22 Nov
         - 22 Nov - 28 Nov
@@ -248,8 +259,8 @@ For subject CPE334, KMUTT
                 - Score 2 remaining 1 point
                 - Icon instead of picture
             - Connecting Page
-                - Come from Home Page of Jane
-                - Waiting for Jane to be done with Home page
+                - Come from the Home Page of Jane
+                - Waiting for Jane to be done with the Home page
                 - Scoring up to 8
         - 26 Oct - 2 Nov
         - 3 Nov - 15 Nov
@@ -275,13 +286,13 @@ For subject CPE334, KMUTT
 <img src="reference/image.png" alt="OMG" width="20px">
 No dividing into multiple .py files to run. 
 Only import to be page run in the main.py file.
-Meeting for letting everyone know that the files format will probably needed to be changes. 
+Meeting to let everyone know that the file format will probably need to be changed. 
 <img src="reference/image-1.png" alt="fake-smile" width="20px">
 
 - Need fixing
     - login.py
     - main.py
-    - django
+    - Django
         - settings.py
         - urls.py
         - user app
@@ -295,8 +306,8 @@ Meeting for letting everyone know that the files format will probably needed to 
 <summary>Thursday 5 Oct Meeting planning</summary>
 
 - Main Function to be done
-    - To do list 
-    - To buy list 
+    - To-do list 
+    - To-buy list 
         - Total price calculation
     - Notification
     - Calendar
@@ -418,7 +429,7 @@ Functional Requirements:
 - Project name
     - *INSERT COOL CATCHY NAME HERE*
     - LifeHack (Backup Name)
-- Appication
+- Application
     - Android compile
         - https://youtu.be/NA2R7zagNzM?si=B_tl8xjbMyA8Ls27
     - Flutter(Flet) (UI) - @Sirapobchon,@pppcyd,@janekmutt,@EXer07
@@ -429,7 +440,7 @@ Functional Requirements:
 - UI Designing (Flet)
     - Notification
         - https://youtu.be/dhQ-zPErVgQ?si=KPA64J1p7gnu7JXC
-    - To Do List
+    - To-Do List
         - https://youtu.be/qRqxAUC_4oA?si=GD1teHgYMIzd__Xe
     - Learning Playlist
         - https://youtube.com/playlist?list=PLIYV27zh-hBEcu70pkUkdbwrJuKqdQ9tK&si=RCJESJDf4saLO4rm
